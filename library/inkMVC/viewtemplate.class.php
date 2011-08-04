@@ -36,7 +36,7 @@ Class ViewTemplate {
 
 	public function show($module, $name) {
 		$path = 'view/'.$module.'/'.$name.'.'.$module.'.php';
-
+		$path = strtolower($path);
 		if (file_exists($path) == false){
 			throw new Exception('Template not found in '. $path);
 			return false;
