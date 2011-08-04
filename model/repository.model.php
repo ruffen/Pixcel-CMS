@@ -118,7 +118,7 @@ class Repository{
 	 *
 	 * @param object $className objet to be save
 	 * @param bool $session indicates wheter we want it to be saved to db or just to store it in session
-	 * @return bool indicating wheter save was successfull or not
+	 * @return object saved object with ID
 	 *
 	 */
 	private function saveObject($object, $className){

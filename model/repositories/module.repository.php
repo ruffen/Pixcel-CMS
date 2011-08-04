@@ -1,8 +1,16 @@
 <?php
 class ModuleRepository extends MysqlDb{
-	public function getModule($modulename){
-		$sql = "SELECT * FROM ink_modules WHERE LOWER(routeName) = ?;";
-		$row = $this->runSingleQuery($sql, array(strtolower($modulename)));
+	public function getModule($routename){
+		if(strtolower($routename) == 'index'){
+			$where = 'cmsIndex = ?';
+			$values = array(true);
+		}else{
+			$where = 'LOWER(routename) = ?';
+			$values = array($routename);
+		}
+		
+		$sql = "SELECT * FROM ink_modules WHERE {$where}";
+		$row = $this->runSingleQuery($sql, $values);
 		if(count($row) == 0){
 			throw new DataException("nomodule");
 		}

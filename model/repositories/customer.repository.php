@@ -12,6 +12,8 @@ class CustomerRepository extends MysqlDb{
 			$properties = array(
 					'id' => $row['customerId'],
 					'name' => $row['customerName'],
+					'subdomain' => $row['subdomain'],
+					'newsletter' => $row['newsletter'],
 					'sites' => $dRep->getSiteCollection(array('customer' => $row['customerId']))
 				);
 		}
@@ -19,6 +21,11 @@ class CustomerRepository extends MysqlDb{
 		$customer->setProperties($properties);
 		$this->customers[$id] = $customer;
 		return $customer;
+	}
+	public function SaveCustomer($customer){
+		$sql = "INSERT INTO ink_customer (customerName, subdomain, newsletter) VALUES (?,?,?);";
+		$id =  $this->insertValues($sql, array($customer->getName(), $customer->getSubdomain(), $customer->getNewsletter()));
+		return $id;
 	}
 }
 

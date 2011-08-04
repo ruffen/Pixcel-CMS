@@ -30,7 +30,7 @@ class Router{
 		throw new RouteException('Could not find a route');
 	}
 	public function LoadController($repository){
-		$controllerName = $this->resolveController().'Controller';
+		$controllerName = $this->resolveController($repository).'Controller';
 		$actionName = $this->resolveAction();
 		if (is_callable(array($controllerName, $actionName)) === false){
 			throw new ControllerException('Action '.$actionName.' is not callable on controller '.$controllerName);	
@@ -61,8 +61,12 @@ class Router{
 			echo trim($this->template);
 		}
 	}
-	private function resolveController(){
+	private function resolveController($repository){
 		$controller = $this->route[0];
+		if(empty($controller)){
+			$module = $repository->getModule('index');
+			$controller = $module->getRoute();
+		}
 		
 		if($controller == 'logout'){
 			throw new AccessException('logout');
@@ -73,7 +77,7 @@ class Router{
 		}
 		//include the controller
 		include_once($file);
-		return $this->route[0];
+		return $controller;
 	}
 	private function resolveAction(){
 		if(count($this->route) > 1){

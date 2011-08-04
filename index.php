@@ -5,7 +5,7 @@ include_once('library/init.php');
 try{
 /** load the controller **/
 	$router = new Router(trim($varChecker->getValue('rt'),'/'));
-
+	
 	$controller = $router->LoadController($dRep);
 	/** check user is logged in and all that **/
 	$fido = new Guarddog();

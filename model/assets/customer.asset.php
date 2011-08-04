@@ -2,8 +2,11 @@
 class Customer extends Asset{
 	protected $id;
 	protected $name;
+	protected $timezone;
 	protected $sites;
 	protected $roles;
+	protected $newsletter;
+	protected $subdomain;
 
 	public function getSite(){
 		if(isset($_SESSION) && isset($_SESSION['site'])){
@@ -25,6 +28,15 @@ class Customer extends Asset{
 			}
 		}
 		$this->sites[] = $site;
+	}
+	public function getName(){
+		return $this->name;
+	}
+	public function getNewsletter(){
+		return $this->newsletter;
+	}
+	public function getSubdomain(){
+		return $this->subdomain;
 	}
 }
 ?>
