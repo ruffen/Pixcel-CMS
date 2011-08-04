@@ -1,0 +1,10 @@
+﻿<Template>
+  <ink_templates>
+    <id>templateId</id>
+    <customer>customerId</customer>
+    <name>templateName</name>
+    <spot type="array" pk="spotId" fk="templateId" join="ink_templates_spots">
+      <object relation="n">Spot</object>
+    </spot>
+  </ink_templates>
+</Template>

@@ -1,0 +1,9 @@
+﻿<role>
+  <ink_roles>
+    <id>roleId</id>
+    <name>roleName</name>
+    <read>readEntity</read>
+    <write>writeEntity</write>
+    <editor>editorEntity</editor>
+  </ink_roles>
+</role>

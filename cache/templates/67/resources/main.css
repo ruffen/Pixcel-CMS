@@ -1,0 +1,413 @@
+@charset "utf-8";
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* ----- ALL DESIGN AND CSS IS COPYRIGHT INK AUSTRALASIA PTY LTD ----- */
+/* ---- FOR INFORMATION PLEASE CONTACT INFO@INKADVERTISING.COM.AU ---- */
+/* ------------------------------------------------------------------- */
+/* -----------------------UPDATED 08/01/10---------------------------- */
+/* ------------------------------------------------------------------- */
+
+
+/* Global Styles  */
+
+html 									{ height:100%; min-height:100%; min-width:980px; margin:0 auto; padding:0; font-size:12px; font-family:Arial, Helvetica, sans-serif; background:url(../images/imgrotate/bluesky.jpg) #0e0e0e repeat-x 0px 78px; } 
+body 									{ margin:0 auto; min-width:980px; height:100%; min-height:100%; text-align:center; padding:0; background:url(../images/header-bg.png) repeat-x; }
+.preamble								{ width:950px; margin:0 auto;  padding:0 15px; }
+	#header								{ height:90px; width:965px; margin:0; padding:0; float:left;   }
+		#logo							{ height:79px; width:164px; float:left; }
+		#logo img, #logo a				{ border: none; }
+		
+	#product							{ width:963px; margin:0 auto; padding:0; float:left; margin-top:-10px; margin-left:-13px;  }
+		#productimg						{ width:503px; height:390px; float:left; margin-left:-50px; }
+		#producttxt						{ width:430px; float:right; margin:75px 0 0 0; text-align:left;  }	
+		#producttxt p					{ font-family: "Trebuchet MS",serif; font-size: 15px; color:#FFF; }
+		#producttxt .button				{ margin:68px 15px 0 0; float:left; border:none; }
+		.ie7 #producttxt .button		{ margin:57px 15px -3px 0; float:left; border:none; }
+		
+		#banner								{ width:100%; margin:0 auto; padding:0; float:left; text-align:left; }
+			#banner img						{ margin-top:37px; margin-bottom:-37px; }
+		
+		#content							{ width:100%; margin:0 auto; padding:0; float:left; text-align:left; line-height:20px; background:#fff; margin-top:72px; border-top:1px solid #eaeaea; padding-bottom:15px; }
+		#content h1 								{ font-family: "Trebuchet MS",serif; color:#333; font-size:26px; font-size-adjust:none; font-stretch:normal; font-style:normal; font-variant:normal; font-weight:normal;    	   									      line-height:1em; margin:36px 0 18px; padding:0; }
+		
+		#content h2 								{ color:#333; font-family:"Trebuchet MS",serif; font-size:18px; font-size-adjust:none; font-stretch:normal; font-style:normal; font-variant:normal; font-weight:normal;  	 	   										  line-height:27px; margin:25px 0 0 0; padding:0; }
+		
+		#content p, #content ul							{ color:#636B75; font-family:Arial,sans-serif; font-size:13px; font-size-adjust:none; font-style:normal; font-variant:normal; font-weight:normal; line-height:18px; }
+		
+		.number							{ color:#333; font-family:"Trebuchet MS",serif; font-weight:bold; }
+		
+	#columns							{ width:100%; margin:0 auto; padding:0; float:left; text-align:left; line-height:20px; background:#f4f5f4; margin-top:8px; border-top:1px solid #eaeaea; padding-top:15px;  }
+		#columns .top						{ float:left; margin:7px 10px 0 0; }
+		.ie7 #columns .top					{ float:left; margin:0px 10px 0 0; }
+		#columns .bottom					{ float:left; margin:-5px 10px 0 0; }
+		#columns p							{ font:Arial, Helvetica, sans-serif; font-size:13px; color:#777e87; margin-top:17px; margin-bottom:30px; }
+		.ie7 #columns p						{ margin-top:24px; }
+			#col1							{ float:left; width:234px; margin:0; padding:0; margin-right:20px; }
+			#col2							{ float:left; width:220px; margin-right:16px; }
+			#col3							{ float:left; width:220px; margin-right:16px; }
+			#col4							{ float:left; width:220px; }
+		
+	#footer									{ width:100%; margin:0 auto; padding:0; background:url(../images/footer-main-bg.jpg) repeat-x; height:287px; float:left; text-align:left;  }
+		#footercol1							{ float:left; width:300px; margin:0; padding:25px 0 0 0; margin-right:10px; background:url(../images/footer-divider.jpg) no-repeat 100% 27px; height:245px; }
+		#footercol2							{ float:left; width:220px; margin-right:30px; padding:25px 0 0 0; margin-left:33px; }
+		#footercol3							{ float:left; width:300px; padding:25px 0 0 0; margin-left:30px; }
+		#footerul1							{ list-style-type:none; margin:0; padding:0; margin-top:25px; }
+			#footerul1 img					{ float:left; margin-top:6px; margin-right:10px; border:none; }
+			#footerul1 li					{ font-family: "Trebuchet MS",serif; font-size:17px; color:#FFF; height:43px; line-height:2.5; }
+			#footerul1 .small				{ font-size:14px; line-height:3; }
+		#footerul2							{ list-style-type:none; margin:0; padding:0; margin-top:25px; }
+			#footerul2 img					{ float:right; margin-top:5px; border:none; }
+			#footerul2 li					{ font-family: "Trebuchet MS",serif; font-size:14px; color:#8f8f8f; line-height:2.8; height:38px; border-bottom:1px solid #3e3e3e; }
+			#footerul2 li a					{ color:#8f8f8f; border:none; }
+			
+		#footer p							{ font:Arial, Helvetica, sans-serif; font-size:12px; color:#777e87; margin-top:17px; line-height:1.3; }
+		
+		fieldset.subscribe {
+			border: none;
+			width: 342px;
+			margin: 0 auto;
+			padding:14px 0 0 0;
+		}
+		.subscribe input, .subscribe button {
+			border: none;
+			float: left;
+		}
+		.subscribe input.box {
+			color: #545961;
+			font-size: 13px;
+			width: 198px;
+			height: 37px;
+			padding: 10px 0px 0px 14px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat;
+		}
+		.mac .subscribe input.box {
+			color: #545961;
+			font-size: 13px;
+			width: 198px;
+			height: 37px;
+			padding: 0px 0px 0px 14px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat;
+		}
+		.gecko .subscribe input.box {
+			color: #545961;
+			font-size: 13px;
+			width: 198px;
+			height: 37px;
+			padding: 0px 0px 0px 14px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat;
+		}
+		.ie7 .subscribe input.box {
+			padding: 10px 0px 0px 14px;
+		}
+		/*.subscribe input.box:focus {
+			background:#fff url(../images/footer-subscribe-bg.jpg) no-repeat left -38px;
+			outline: none;
+		}*/
+		.subscribe button.btn {
+			width: 105px;
+			height: 37px;
+			cursor: pointer;
+			text-indent: -9999px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat top right;
+		}
+		.subscribe button.btn:hover {
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat top right;
+		}
+		
+		
+		#credits							{ width:100%; color:#FFF; height:52px; margin:0 auto; padding:0; float:left; font-size:11px; }
+			#creditsleft					{ float:left; padding:20px 0 0 0; }
+				#creditsleft img				{ float:left; margin:-10px 10px 0 0; border:none; }
+			#creditsright					{ float:right; padding:20px 0 0 0; }
+		
+		
+		#credits							{ width:100%; color:#FFF; height:52px; margin:0 auto; padding:0; float:left; font-size:11px; }
+			#creditsleft					{ float:left; padding:20px 0 0 0; }
+				#creditsleft img				{ float:left; margin:-10px 10px 0 0; border:none; }
+			#creditsright					{ float:right; padding:20px 0 0 0; }
+		
+		
+		a									{ color:#03caf3; border-bottom:1px solid; text-decoration:none; }
+		a:hover								{ color:#000; }
+		
+		#footer a							{ color:#03caf3; border-bottom:1px solid; text-decoration:none; }
+		#footer a:hover						{ color:#FFF; }
+		
+		#credits a							{ color:#03caf3; border-bottom:1px solid; text-decoration:none; }
+		#credits a:hover					{ color:#FFF; }
+		
+		
+		
+		h2								{ font-family: "Trebuchet MS",serif; font-size: 16px; color:#545961; font-weight:100; }
+		.largeh2						{ font-family: "Trebuchet MS",serif; font-size: 31px; color:#545961; font-weight:100; margin-top:12px; margin-bottom:-5px; }
+		.ie7 .largeh2					{ margin-bottom:-12px; }
+		.smallh2						{ font-family: "Trebuchet MS",serif; font-size: 12px; color:#545961; font-weight:100; }
+		
+		#footer h2						{ font-family: "Trebuchet MS",serif; font-size: 20px; color:#03caf3; font-weight:100; }
+
+/* --- End --- */
+
+
+/* Main Navigation Styles */
+
+#navigation										{ float:right; margin:0; padding:0; font-family: "Trebuchet MS",serif; font-size: 15px; margin-right:20px; }
+#navigation li									{ float:left; display:inline; width:100px; height:97px; color:#FFF; text-align:center; }
+#navigation .last								{ width:126px; height:39px; background:url(../images/button-login.png) no-repeat; margin:20px 0 0 10px; }
+	#navigation li:hover						{ background:url(../images/nav-hover-bg.png) bottom center no-repeat; }
+	#navigation .last:hover						{ background:url(../images/button-login-hover.png) no-repeat; }
+	#navigation .selected						{ background:url(../images/nav-hover-bg.png) bottom center no-repeat; }
+	#navigation .selected a 					{ color: #33ccff; }
+	#navigation li:hover a 						{ color: #33ccff; }
+	#navigation a								{ color: #FFF; text-decoration:none; float:left; text-align:center; width:100px; margin:0; padding:30px 0 40px 0; float:left; border:none;}
+	#navigation a:hover							{ color: #33ccff; }
+	#navigation .last a							{ width:126px; }
+	
+				
+/* --- End --- */
+
+
+table#pricing, table.features {
+	margin: 10px 0 10px 0px;
+	/*border-collapse:collapse;*/ /* use cellspacing="0" instead because FF mucks up border overlap otherwise */
+	}
+	table#pricing td, table#pricing th, table.features td, table.features th {
+		background:#f9f9f9;
+		border: 1px solid #cccccc;
+		border-right:none;
+		border-top:none;
+		vertical-align:middle;
+		padding:9px 15px;
+		text-align:center;
+		border-spacing:0px;
+		width:20%;
+		}
+		table#pricing.upgrade td, table#pricing.upgrade th {
+			width:40%;
+			}
+		table.features td, table.features th {
+			width:40%;
+			}
+	table#pricing td, table.features td {
+		}
+		table#pricing tr.even td, table#pricing tr.even th, table.features tr.even td, table.features tr.even th {
+			background:#f2f2f2;
+			}
+			table#pricing tr.even td.last, table.features tr.even td.last {
+				background:#f2f2f2 url(images/td_pricing_bg_r.gif) right top repeat-y;
+				}
+		table#pricing td.last, table.features td.last {
+			border-right:1px solid #cccccc;
+			background: #f9f9f9 url(images/td_pricing_bg_r.gif) right top repeat-y;
+			}
+		table#pricing td.info, table.features td.info {
+			background:#00AEF3 url(images/td_pricing_info_bg_r.gif) right bottom repeat-y;
+			border-color:#00A0E0;
+			color:#fff;
+			font-weight:bold;
+			padding:15px;
+			}
+		table#pricing td.empty, table.features td.empty {
+			border-left: none;
+			background:#f4f5f4;
+			}
+	table#pricing th, table.features th {
+		text-align:right;
+		vertical-align:top;
+		}
+		table#pricing.upgrade th {
+			width:20%;
+			}
+		table.features th {
+			width:20%;
+			}
+		table#pricing th span, table.features th span {
+			font-weight:normal;
+			display:block;
+			}
+		table#pricing tr.header th, table.features tr.header th {
+			text-align:center;
+			background:#00aef3;
+			border-left:1px solid #00a0e0;
+			border-bottom:1px solid #00a0e0;
+			border-top:none;
+			font-size:15px;
+			color:#fff;
+			padding:15px;
+			}
+			table#pricing.upgrade tr.header th {
+				width:20%;
+				}
+			table.features tr.header th {
+				width:20%;
+				}
+			table#pricing tr.header th.empty, table.features tr.header th.empty {
+				background:#fff;
+				border-left:none;
+				border-bottom:1px solid #cccccc;
+				}
+			table#pricing tr.header th.first, table.features tr.header th.first {
+				-moz-border-radius-topleft:10px; 
+									      -webkit-border-top-left-radius:10px; 
+									      -moz-border-radius-topright:10px; 
+									      -webkit-border-top-right-radius:10px;
+				background:#00aef3 url(images/th_corner_tl.gif) left top no-repeat;
+				border-left:none;
+				}
+				table.features tr.header th.first {
+					padding:0;
+					width:80%;
+					}
+					table.features tr.header th.first .inner {
+						background:transparent url(images/th_corner_tr.gif) right top no-repeat;
+						padding:15px 15px;
+						}
+			table#pricing tr.header th.last, table.features tr.header th.last {
+			-moz-border-radius-topleft:10px; 
+									      -webkit-border-top-left-radius:10px; 
+									      -moz-border-radius-topright:10px; 
+									      -webkit-border-top-right-radius:10px;
+				background:#00aef3 url(images/th_corner_tr.gif) right top no-repeat;
+				}
+			table#pricing tr.header th {
+				-moz-border-radius-topleft:10px; 
+									      -webkit-border-top-left-radius:10px; 
+									      -moz-border-radius-topright:10px; 
+									      -webkit-border-top-right-radius:10px;
+										  }
+										  	
+	table#pricing .small-print {
+		font-size:11px;
+		margin:0.7em 0 0 0;
+		}
+	td span.price {
+		font-size:24px;
+		}
+	td span.pricesmall {
+		font-size:18px;
+	}	
+	tr a.btn-signup, tr a.btn-signup:visited {
+		display:block;
+		width:75px;
+		height:35px;
+		background: transparent url(/images/btn_signup.png) 0 0 no-repeat;
+		text-indent:-9999px;
+		margin:8px auto 0 auto;
+		}
+		tr a.btn-signup:hover {
+			background: transparent url(/images/btn_signup.png) 0 -35px no-repeat;
+			}
+	table.features td span {
+		background: transparent url(/images/tick.png) 0 0 no-repeat;
+		padding:0 0 0 20px;
+		}
+		table.features td span.new {
+			background: transparent url(/images/tick_new.png) 0 0 no-repeat;
+			padding:0 0 0 52px;
+			}
+	table.features td span.no {
+		background: transparent url(/images/cross.png) 0 0 no-repeat;
+		padding:0 0 0 22px;
+		}
+
+
+
+
+#bodycontent {
+	padding:20px;
+	background:#fff;
+	border:1px solid #ccc;
+	-moz-border-radius-topleft:10px; 
+    -webkit-border-top-left-radius:10px; 
+    -moz-border-radius-topright:10px; 
+    -webkit-border-top-right-radius:10px;
+	
+	-moz-border-radius-bottomleft:10px; 
+    -webkit-border-bottom-left-radius:10px; 
+    -moz-border-radius-bottomright:10px; 
+    -webkit-border-bottom-right-radius:10px;
+}
+
+.feature {
+	margin-left:30px;
+	padding-bottom:20px;
+	border-bottom:1px dotted #ccc;
+	margin-right:30px;
+}		
+
+.featureimg {
+	float:left;
+	margin-right:30px;
+}	
+
+
+.contentpreamble	{ border:1px solid #fff; width:950px; min-height:782px; margin:0 auto; background: url(../images/bg_bodycontent.jpg) top left no-repeat; }
+
+#sub-content{float:left;width:215px; margin-top:30px; }
+#sub-content img {border:none;}
+#sub-content a:hover {text-decoration:underline;}
+#main-content 	{margin-left:250px; margin-top:20px;}
+
+
+
+#nav-02{background:border-bottom:1px solid #fff;margin:0
+0 18px 0;padding:1px
+0 0}
+
+#nav-02 li{color:#797c80;list-style:none;margin:0
+0 0 0;width:215px; }
+
+#nav-02 li a{border-bottom:1px solid #dcddde;border-top:1px solid #fff;color:#545961;display:block;font-size:14px;font-weight:bold;padding:10px
+0 10px 42px;position:relative;width:180px}
+
+#nav-02 .current
+a{background:#000 url('../images/bg-nav-current.png') no-repeat right center;border:none;color:#fff;padding-right:11px;text-shadow:-1px -1px 0 #333}
+
+#nav-02 a
+img{left:10px;margin-top:-12px;position:absolute;top:50%}
+
+#nav-02
+ul{border-bottom:1px solid #dcddde;margin:0;padding:12px
+0;width:225px}
+
+#nav-02 li
+li{margin-bottom:3px;position:relative}
+
+#nav-02 li li a, #nav-02 .current li
+a{background:none;border:none;color:#797c80;font-size:13px;font-weight:normal;padding:3px
+25px 3px 11px;text-shadow:none;width:175px}
+
+#nav-02 li .current, #nav-02 .current
+.current{background:#dedfe0 url('http://i3.campaignmonitor.com/themes/site_themes/default/img/bg_nav-02-top.png') no-repeat 0 0;border:none;padding:0}
+
+#nav-02 li .current a, #nav-02 .current .current
+a{background:url('http://i3.campaignmonitor.com/themes/site_themes/default/img/bg_nav-02-btm.png') no-repeat left bottom;border:none;color:#000;text-shadow:none}
+
+#nav-02 li li
+span{background:url('http://i3.campaignmonitor.com/themes/site_themes/default/img/bg_nav-02-arrow.png') no-repeat 195px center;display:block}
+
+.vbox1{ background:url(../images/bg-box.png) top left repeat-x; width:205px; padding:5px; }
+
+
+
+.vbox1{background:#fff url('http://i3.campaignmonitor.com/themes/site_themes/default/img/bg_vbox-btm.png') no-repeat left bottom;margin-bottom:18px;padding:0
+13px 13px 13px;width:189px}
+
+.vbox1 h3{background:#cccbcb url('../images/bg-box.png') no-repeat 0 0;color:#fff;font:bold 13px/18px Arial;margin:0
+-13px 18px -13px;padding:7px
+13px;}
+.vbox1 .title{font-size:16px;font-weight:bold;line-height:22px}
+.vbox1 .figure-a{margin-right:9px}
+
+.vbox1 .vimg {float:left; padding-right:10px; padding-bottom:5px;}
+
+.vbox1 a {text-decoration:none; border:none; }
+
+.absmiddle {
+vertical-align:middle;
+}
+
+.detail {
+	float:left; width:120px; margin-right:30px;
+	font-weight:bold;
+	color:#666;
+	}

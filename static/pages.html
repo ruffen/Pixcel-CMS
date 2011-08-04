@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pixel CMS&trade;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/browser_selector.js" type="text/javascript"></script>
+<link href="css/master.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/pages.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 7]> <link href="css/ie7.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+<!--[if IE 6]> <link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+<link rel="stylesheet" href="css/jquery.checkbox.css" />
+<link rel="stylesheet" type="text/css" href="css/dd.css" />
+<script type="text/javascript" src="js/jquery.js" ></script>
+
+<script language="javascript" type="text/javascript" src="js/jquery.dd.js"></script>
+<script type="text/javascript" src="js/jquery.checkbox.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('input:checkbox:not([safari])').checkbox();
+		$('input[safari]:checkbox').checkbox({cls:'jquery-safari-checkbox'});
+		$('input:radio').checkbox();
+	});
+</script>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function(arg) {
+	$("#languages").msDropDown();
+	})
+</script>
+
+<!-- Start PHP File Tree -->
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/context-menu.js"></script><!-- IMPORTANT! INCLUDE THE context-menu.js FILE BEFORE drag-drop-folder-tree.js -->
+<script type="text/javascript" src="js/drag-drop-folder-tree-pms.js"></script>
+<!-- End PHP File Tree -->
+
+
+
+</head>
+
+<body>
+	<div id="preamble">
+    
+    <div class="siteSelectList">
+    <p>Currently Viewing:</p>
+				<select id="topbarSitelist">
+					<option selected="selected" value="1">Ink demo site</option>
+					<option value="76">Ink Demo Site - LIVE</option>
+					<option value="77">INK Site</option>
+				
+				
+				</select>
+			</div>
+    
+    	
+      
+        <div id="user">
+        
+        	<div class="userbutton" onclick="javascript:window.location='user_profile.html'"><img src="images/icons/16/user.png" alt="" />Patrick Jones</div>
+            <div class="helpbutton"></div>
+            <div class="logoutbutton" onclick="javascript:window.location='index.html'"><img src="images/icons/16/back.png" alt="" />Logout User</div>
+        </div>
+        
+        
+        <div id="global">
+      
+      <div class="systembutton"><a href="#"><img alt="" src="/static/images/icons/16/database.png" style="vertical-align:middle;">System Settings</a>
+      
+      <div id="settings-picker">
+                        <ul>
+                          <li><a href="site_config.html"><img src="images/icons/16/home_next.png" alt="" width="16" height="16" /> Site Configuration</a></li>
+                          <li><a href="templates.html"><img src="images/icons/16/page_process.png" alt="" width="16" height="16" /> Templates</a></li>
+                          <li><a href="reseller.html"><img src="images/icons/16/favorite_add.png" alt="" width="16" height="16" /> Reseller Settings</a></li>
+                        </ul>
+                      </div>
+      
+      </div>
+      <div class="groupbutton"><a href="#"><img alt="" src="/static/images/icons/16/users.png" style="vertical-align:middle;">Users/Groups</a></div>
+      
+      </div>
+      
+      
+        
+    </div>
+    <div id="header">
+    	<div id="pixelcmslogo">
+    		<a href="index.html"><img src="images/pixelcms-logo.png" alt=""  /></a>
+        </div>
+        <div id="menu">
+        	<ul id="navigation">
+            	<li class="dash"><a href="dashboard.html">Dashboard</a></li>
+                <li class="stats"><a href="stats.html">Statistics</a></li>
+               <!-- <li class="system"><a href="#">System</a>
+                	
+                </li>
+                <li class="users"><a href="users.html">Users/Groups</a></li>-->
+                <li class="pages-selected"><a href="pages.html">Pages</a></li>
+                <li class="files"><a href="files.html">File System</a></li>
+                <li class="modules"><a href="#">Modules</a>
+                
+                <div id="module-picker">
+                        <ul>
+                          <li><a href="site_config.html"><img src="images/icons/24/comments.png" alt="" width="24" height="24" /> Blog</a></li>
+                          <li><a href="templates.html"><img src="images/icons/24/application_edit.png" alt="" width="24" height="24" /> Form Creator</a></li>
+                        </ul>
+                      </div>
+                
+                </li>
+            </ul>
+        </div>          
+    </div>
+    <div style="clear: both;"></div>
+    <div id="content">
+    
+    
+    	<div id="leftcol">
+        
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/page_process.png" align="left" class="icon" />Menu</h2>
+                    <p>Use these options to create, remove and maintain pages</p>
+                </div>
+                <div class="dashcontent">
+                	<ul class="subnav">
+                        <li><a href="#"><img src="images/icons/24/page_add.png" alt="Create New Page" /> Create New Page</a></li>
+                        <li><a href="#"><img src="images/icons/24/page_remove.png" alt="Delete Current Page" /> Delete Current Page</a></li>
+                        <li><a href="#"><img src="images/icons/24/page_edit.png" alt="Edit Current Page" /> Edit Current Page</a></li> 
+                        <li><a href="#"><img src="images/icons/24/page_search.png" alt="Preview Current Page" /> Preview Current Page</a></li>  
+                        <li><a href="#"><img src="images/icons/24/page_up.png" alt="Publish Current Page" /> Publish Current Page</a></li>
+                    </ul>       
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+                                
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/application.png" align="left" class="icon" />Site Structure</h2>
+                    <p>Organise and order your Websites and pages</p>
+                </div>
+                <div class="dashcontent">
+					<p class="greybox">Open Folders By Default<span class="greyboxcheck"><input type="checkbox" name="checkbox[]" class="top5" checked="checked" /></span></p>
+                    <p class="greybox">Edit Sitemap<span class="greyboxbutton"><a href="#">Edit Sitemap</a></span></p>
+                    <p class="blackbox">
+                    Save Changes:
+                    
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/remove.png" alt="" />Cancel</a>
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/accept.png" alt="" />Save</a>
+                    
+                    </p>
+                    
+                        <ul id="dhtmlgoodies_tree2" class="file_tree">
+                            <li id="node0" noDrag="true" noSiblings="true" noDelete="true" noRename="true"><a href="#">Ink Website</a>
+                                <ul>
+                                    <li id="node1"><a href="#">Home</a> - (index)</li>
+                                    <li id="node2"><a href="#">About Us</a>
+                                        <ul>
+
+                                            <li id="node21"><a href="#">Testimonials</a></li>
+                                            <li id="node22"><a href="#">History</a></li>
+                                            <li id="node23"><a href="#">Our Team</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="node3"><a href="#">Services</a>
+                                        <ul>
+
+                                            <li id="node31" noRename="true"><a href="#">Design</a></li>
+                                            <li id="node32"><a href="#">Internet</a></li>
+                                            <li id="node33"><a href="#">Advertising</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="node4"><a href="#">Portfolio</a></li>
+                                    <li id="node5"><a href="#">Contact Us</a></li>
+
+                                </ul>
+                            </li>
+                        </ul> 
+ 
+                     
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+        
+        </div>
+        
+        
+        <div id="rightcol">
+        
+             <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/info.png" align="left" class="icon" />Page Properties for 'Index'</h2>
+                    <p>Control metadata and properties for your pages</p>
+                </div>
+                <div class="dashcontent">
+                	<p class="greenbox"><img src="images/icons/16/accept.png" align="left" class="icon" />Published - Friday 6 August 2010 @ 5:30am </p>
+                    <p class="redbox"><img src="images/icons/16/remove.png" align="left" class="icon" />Page Expired - Friday 6 August 2010 @ 5:30am </p>
+                    <p class="yellowbox"><img src="images/icons/16/notes_edit.png" align="left" class="icon" />This saved version has not been published </p>
+                	<h3><img src="images/icons/48/page.png" alt="" class="site" />Home - (Index) <a id="change_password_submit" href="#" class="smlbutton">Set as Index</a>
+                    </h3>
+                    
+                    <span class="language">
+                    	
+                        
+                        <select name="languages" id="languages" style="width:200px;" >
+                            <option value="English" title="images/flags/au.png">English</option>
+                            <option value="Chinese" title="images/flags/chinese.png">Chinese</option>
+                            <option value="French" title="images/flags/french.png">French</option>
+                            <option value="German" title="images/flags/german.png">German</option>
+                            <option value="Italian" title="images/flags/italian.png">Italian</option>
+                            <option value="Nederlands" title="images/flags/nederlands.png">Nederlands</option>
+                            <option value="Polish" title="images/flags/polish.png">Polish</option>
+                            <option value="Spanish" title="images/flags/spanish.png">Spanish</option>
+                            <option value="Swedish" title="images/flags/swedish.png">Swedish</option>
+                            <option value="Vietnamese" title="images/flags/vietnamese.png">Vietnamese</option>
+                        </select>
+
+                    
+                    
+                    </span>
+                    <div class="separator"></div>
+                    
+                    
+                    <div class="forms">	
+                    <form action="#" method="get">
+                    
+                    <fieldset>
+    
+                        <legend><span>Page Information</span></legend>
+                        
+                        <div>
+                            <label for="pagename">Page Name:</label>
+                            <input name="pagename" id="pagename" type="text" />
+    
+                        </div>
+                        
+                        <div>
+                            <label for="pagename">Page Status:</label>
+                            <span id="statusp"><img src="images/icons/16/lock_disabled.png" align="left" class="icon" />Not Locked</span>
+                          
+                        </div>
+                        
+                        
+                        <div>
+                            <label for="pagename">Page URL:</label>
+                            <p class="url">http://www.companyname.com.au/<span style="background-color:#FFFBCC">about_us</span>/</p>&nbsp;<a id="change_password_submit" href="#" class="smlbutton">Edit</a>
+    
+                        </div>
+                        
+                        <div>
+                            <label for="pagename">Page URL:</label>
+                            <p class="url">http://www.companyname.com.au/</p><input name="url" id="url" type="text" value="about_us" style="width:100px;" /><p class="url">/</p>&nbsp;<a id="change_password_submit" href="#" class="smlbutton">OK</a>
+    
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div>
+                            <label for="enquiry">Page Template</label>
+                            <select id="enquiry" name="enquiry">
+                                <option selected="selected">Choose a template</option>
+                                <option>Index</option>
+                                <option>Main Page</option>
+    
+                                <option>Gallery Page</option>
+                            </select>		
+                        </div>
+                        
+                        <div>
+    
+                            <label for="enquiry">Parent Page</label>
+                            <select id="enquiry" name="enquiry">
+                                <option selected="selected">Choose a parent</option>
+                                <option>Home</option>
+                                <option>Portfolio</option>
+                                <option>About Us</option>
+    
+                            </select>		
+                        </div>
+                        
+                        
+                        <div>
+                            <label for="comments">Keywords:</label>
+                            <textarea id="comments" name="comments" rows="4" cols="40"></textarea>
+                             <p>(Enter in specific words which describe the content of this page and its information.)</p>
+    
+                        </div>
+                       
+                        <div>
+                            <label for="comments">Description:</label>
+                            <textarea id="comments" name="comments" rows="4" cols="40"></textarea>
+                            <p>(Enter in a short paragraph which summarises this page.)</p>	
+                        </div>	
+                        
+                        	
+                   <div>
+    
+                            <label for="enquiry">Visibility</label>
+                            <select id="enquiry" name="enquiry">
+                                <option selected="selected">Visible to public</option>
+                                <option>Hidden from public</option>
+                            </select>		
+                        </div>
+                       
+                        
+                        <!--<div id="submit">
+                            <input name="go" id="go" type="image" value="go" src="images/go.jpg" />
+                        </div>-->
+                    </fieldset>
+                    </form>
+                    
+                    </div>
+                    <p class="greyboxbottom">Confirm Changes
+                    
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/remove.png" alt="" />Cancel Changes</a>
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/accept.png" alt="" />Save Changes</a>
+                    
+                    </p>
+                </div>
+                <div class="dashfooter"></div>
+            </div>     
+                 
+   
+                 
+     
+                 
+            <!--<div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/comments.png" align="left" class="icon" />Languages</h2>
+                    <p>Activate and deactivate additional languages for this page</p>
+                </div>
+                <div class="dashcontent">     
+                            <table>
+                                <tr>
+                                    <td><img src="images/flags/chinese.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Chinese</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center" width="17%"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr class="tralt">
+                                    <td><img src="images/flags/french.png" style="padding-top:4px; margin-right:5px;" /><a href="#">French</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/flags/german.png" style="padding-top:4px; margin-right:5px;" /><a href="#">German</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr class="tralt">
+                                    <td><img src="images/flags/italian.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Italian</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/flags/nederlands.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Nederlands</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr class="tralt">
+                                    <td><img src="images/flags/polish.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Polish</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/flags/spanish.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Spanish</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr class="tralt">
+                                    <td><img src="images/flags/swedish.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Swedish</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/flags/vietnamese.png" style="padding-top:4px; margin-right:5px;" /><a href="#">Vietnamese</a></td>
+                                    <td><select id="" name=""><option selected="selected">Active</option><option>Inactive</option></select></td>
+                                    <td align="center"><img src="images/icons/16/accept.png" alt="" /></td>
+                                </tr>
+                            </table> 
+                            
+                            
+                            </div>
+                		<div class="dashfooter"></div>
+            		</div>-->
+                    
+                            
+                  <div class="dashcontainer">
+                    <div class="dashheading">
+                        <h2><img src="images/icons/24/note_edit.png" align="left" class="icon" />Page Revision History for 'Index'</h2>
+                        <p>Rollback this page to any of the following dates</p>
+                    </div>
+                    <div class="dashcontent">          
+
+                                <table class="dashtable">
+    
+                                        <tr>
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                            
+                                        </tr>
+                                        <tr class="tralt">
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                  </tr> 
+                                        <tr>
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr>
+                                        <tr class="tralt">
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr> 
+                                        <tr>
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr>
+                                        <tr class="tralt">
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr> 
+                                        <tr>
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr>
+                                        <tr class="tralt">
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr>
+                                        <tr>
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr>
+                                        <tr class="tralt">
+                                            <td><img src="images/icons/16/page.png" alt="" class="pagestblicon"/>Monday 11 September 2009 21:00</td>
+                                            <td width="30%"><img src="images/icons/16/user.png" alt="" class="pagestblicon"/>Patrick Jones</td>
+                                            <td width="10%"><img src="images/icons/16/back.png" class="pagestblicon" />Revert</td>
+                                            <td width="10%"><img src="images/icons/16/page_search.png" class="pagestblicon" />View</td>
+                                            <td width="10%"><img src="images/icons/16/remove.png" class="pagestblicon" />Delete</td>
+    
+                                        </tr>
+                     </table>     
+                  
+ 
+                </div>
+                		<div class="dashfooter"></div>
+            		</div>
+
+                    
+                    
+                    
+           
+        
+        </div>
+    </div>
+    <script type="text/javascript">	
+		treeObj = new JSDragDropTree();
+		treeObj.setTreeId('dhtmlgoodies_tree2');
+		treeObj.setMaximumDepth(7);
+		treeObj.setMessageMaximumDepthReached('Maximum depth reached'); // If you want to show a message when maximum depth is reached, i.e. on drop.
+		treeObj.initTree();
+		treeObj.expandAll();
+	</script>
+</body>
+</html>

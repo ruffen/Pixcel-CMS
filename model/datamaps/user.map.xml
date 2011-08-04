@@ -1,0 +1,19 @@
+﻿<user>
+  <ink_user>
+    <id>userId</id>
+    <username>username</username>
+    <password>password</password>
+    <email>email</email>
+    <firstname>firstname</firstname>
+    <lastname>lastname</lastname>
+    <customer type="array" pk="customerId, userId" fk="userId" join="ink_customer_user, ink_user">
+      <object relation="1">Template</object>
+    </customer>
+    <module type="array" pk="moduleId, roleId, roleId" fk="userId" join="ink_modules_in_roles, ink_roles, ink_user_in_roles" order="priority">
+      <object relation="n">Module</object>
+    </module>
+    <role type="array" pk="roleId" fk="userId" join="ink_user_in_roles">
+      <object relation="n">Role</object>
+    </role>
+  </ink_user>
+</user>

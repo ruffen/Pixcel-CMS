@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pixel CMS&trade;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/browser_selector.js" type="text/javascript"></script>
+<link href="css/master.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/pages.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 7]> <link href="css/ie7.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+<!--[if IE 6]> <link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+
+
+
+<!-- Start PHP File Tree -->
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/context-menu.js"></script><!-- IMPORTANT! INCLUDE THE context-menu.js FILE BEFORE drag-drop-folder-tree.js -->
+<script type="text/javascript" src="js/drag-drop-folder-tree-pms.js"></script>
+<!-- End PHP File Tree -->
+
+
+
+</head>
+
+<body>
+	<div id="preamble">
+    	<div id="inklogo">
+        	<a href="http://www.inkadvertising.com.au"><img src="images/ink-logo.jpg" alt="" /></a>
+            <p>
+            	&copy; Copyright Ink Australasia Pty. Ltd. | ABN 13 134 355 712            
+            </p>    
+      </div>
+        <div id="user">
+        	<div class="userbutton" onclick="javascript:window.location='user_profile.html'"><img src="images/icons/16/user.png" alt="" />Patrick Jones</div>
+            <div class="helpbutton"></div>
+            <div class="logoutbutton" onclick="javascript:window.location='index.html'"><img src="images/icons/16/back.png" alt="" />Logout User</div>
+        </div>
+    </div>
+    <div id="header">
+    	<div id="pixelcmslogo">
+    		<a href="index.html"><img src="images/pixelcms-logo.png" alt=""  /></a>
+        </div>
+        <div id="menu">
+        	<ul id="navigation">
+            	<li class="dash"><a href="dashboard.html">Dashboard</a></li>
+                <li class="stats"><a href="stats.html">Statistics</a></li>
+                <li class="system-selected"><a href="#">System</a>
+                	<div id="module-picker">
+                        <ul>
+                          <li><a href="site_config.html"><img src="images/icons/24/home_next.png" alt="" width="24" height="24" /> Site Configuration</a></li>
+                          <li><a href="templates.html"><img src="images/icons/24/page_process.png" alt="" width="24" height="24" /> Templates</a></li>
+                          <li><a href="rollbacks.html"><img src="images/icons/24/database_previous.png" alt="" width="24" height="24" /> Rollbacks</a></li>
+                          <li><a href="reseller.html"><img src="images/icons/24/favorite_add.png" alt="" width="24" height="24" /> Reseller Settings</a></li>
+                        </ul>
+                      </div>
+                </li>
+                <li class="users"><a href="users.html">Users/Groups</a></li>
+                <li class="pages"><a href="pages.html">Pages</a></li>
+                <li class="files"><a href="files.html">File System</a></li>
+            </ul>
+        </div>        
+    </div>
+    <div style="clear: both;"></div>
+    <div id="content">
+    
+    
+    	<div id="leftcol">
+        
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/page_process.png" align="left" class="icon" />Menu</h2>
+                    <p>Use these options to create and remove website templates</p>
+                </div>
+                <div class="dashcontent">
+                	<ul class="subnav">
+                        <li><a href="#"><img src="images/icons/24/page_add.png" alt="Create New Page" /> Create New Template</a></li>
+                        <li><a href="#"><img src="images/icons/24/page_remove.png" alt="Delete Current Page" /> Delete Current Template</a></li>
+                    </ul>       
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+                                
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/application.png" align="left" class="icon" />Template Structure</h2>
+                    <p>View and update your templates</p>
+                </div>
+                <div class="dashcontent">
+                    
+                        <ul>
+                            <li><img src="images/icons/16/home.png" alt="" /><a href="#">ABC Site</a>
+                            	<ul>
+                                	<li><img src="images/icons/16/page_process.png" alt="" /><a href="#">Index</a></li>
+                                    <li><img src="images/icons/16/page_process.png" alt="" /><a href="#">Main Page</a></li>
+                                </ul>
+                            </li>
+                            <li><img src="images/icons/16/home.png" alt="" /><a href="#">Company Site</a>
+                            	<ul class="file_tree">
+                                	<li><img src="images/icons/16/page_process.png" alt="" /><a href="#">Test</a></li>
+                                </ul>
+                            </li>
+                        </ul>    
+                                
+ 
+                     
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+        
+        </div>
+        
+        
+        <div id="rightcol">
+        
+             <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/info.png" align="left" class="icon" />Template Properties</h2>
+                    <p>Set up and customise templates for your websites</p>
+                </div>
+                <div class="dashcontent">
+                	<h3><img src="images/icons/48/page_process.png" alt="" class="site" />Main Page</h3>
+                    <div class="separator"></div>
+                    
+                    
+                    <div class="forms">	
+                    <form action="#" method="get">
+                    
+                    <fieldset>
+    
+                        <legend><span>Template Configuration</span></legend>
+                        <div>
+                            <label for="siteurl">Template Name:</label>
+                            <input name="pagename" id="pagename" type="text" value="Main Page" />
+                          
+                        </div>
+                        
+                        <div>
+                        	<label>Template Location:</label>    
+                            <input name="pagename" id="pagename" type="text" value="C:/files/templates/index.html" />&nbsp;<a id="change_password_submit" href="#" class="smlbutton">Browse...</a><a id="change_password_submit" href="#" class="smlbutton">Upload</a>
+                            
+    
+                        </div>
+                        
+                        <div>
+                        	<label>Content Regions:</label>
+                            <table class="dashtable usertbl">
+                            <tr>
+								<td width="35%" class="greytd"><img src="images/icons/24/windows.png" alt="" class="site" />Top Banner</td>
+                                <td>
+                                	<span class="tblcheck">
+                                        <select name="contentregion" id="contentregion">
+                                        	<option value="">Select...</option>
+                                            <option value="mc">Mixed Content</option>
+                                            <option value="mn">Main Navigation</option>
+                                            <option value="sn">Sub Navigation</option>
+                                            <option value="image">Image</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="flash">Flash</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td width="5%"><img src="images/icons/24/process.png" align="left" class="site" /></td>
+                            </tr>
+                            
+                            <tr>
+								<td width="35%" class="greytd"><img src="images/icons/24/windows.png" alt="" class="site" />Main Navigation</td>
+                                <td>
+                                	<span class="tblcheck">
+                                        <select name="contentregion" id="contentregion">
+                                        	<option value="">Select...</option>
+                                            <option value="mc">Mixed Content</option>
+                                            <option value="mn">Main Navigation</option>
+                                            <option value="sn">Sub Navigation</option>
+                                            <option value="image">Image</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="flash">Flash</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td width="5%"><img src="images/icons/24/process.png" align="left" class="site" /></td>
+                            </tr>
+                            
+                            <tr>
+								<td width="35%" class="greytd"><img src="images/icons/24/windows.png" alt="" class="site" />Sub Navigation</td>
+                                <td>
+                                	<span class="tblcheck">
+                                        <select name="contentregion" id="contentregion">
+                                        	<option value="">Select...</option>
+                                            <option value="mc">Mixed Content</option>
+                                            <option value="mn">Main Navigation</option>
+                                            <option value="sn">Sub Navigation</option>
+                                            <option value="image">Image</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="flash">Flash</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td width="5%"><img src="images/icons/24/process.png" align="left" class="site" /></td>
+                            </tr>
+                            
+                            <tr>
+								<td width="35%" class="greytd"><img src="images/icons/24/windows.png" alt="" class="site" />Main Content</td>
+                                <td>
+                                	<span class="tblcheck">
+                                        <select name="contentregion" id="contentregion">
+                                        	<option value="">Select...</option>
+                                            <option value="mc">Mixed Content</option>
+                                            <option value="mn">Main Navigation</option>
+                                            <option value="sn">Sub Navigation</option>
+                                            <option value="image">Image</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="flash">Flash</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td width="5%"><img src="images/icons/24/process.png" align="left" class="site" /></td>
+                            </tr>
+                            
+                            <tr>
+								<td width="35%" class="greytd"><img src="images/icons/24/windows.png" alt="" class="site" />Thumbnail Photo</td>
+                                <td>
+                                	<span class="tblcheck">
+                                        <select name="contentregion" id="contentregion">
+                                        	<option value="">Select...</option>
+                                            <option value="mc">Mixed Content</option>
+                                            <option value="mn">Main Navigation</option>
+                                            <option value="sn">Sub Navigation</option>
+                                            <option value="image">Image</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="flash">Flash</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td width="5%"><img src="images/icons/24/process.png" align="left" class="site" /></td>
+                            </tr>
+                            
+                            <tr style="border-bottom:1px solid #DFDFDF;">
+								<td width="35%" class="greytd"><img src="images/icons/24/windows.png" alt="" class="site" />Index Movie</td>
+                                <td>
+                                	<span class="tblcheck">
+                                        <select name="contentregion" id="contentregion">
+                                        	<option value="">Select...</option>
+                                            <option value="mc">Mixed Content</option>
+                                            <option value="mn">Main Navigation</option>
+                                            <option value="sn">Sub Navigation</option>
+                                            <option value="image">Image</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="flash">Flash</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <td width="5%"><img src="images/icons/24/process.png" align="left" class="site" /></td>
+                            </tr>
+                            
+                         
+                                   
+                        </table>
+                        </div>    
+                        
+                    </fieldset>    
+                        
+                    <fieldset>    
+                        <div>
+                            <label for="siteurl">Template Files Folder:</label>
+                            <input name="pagename" id="pagename" type="text" value="C:/files/templates/resources/" />&nbsp;<a id="change_password_submit" href="#" class="smlbutton">Browse...</a><a id="change_password_submit" href="#" class="smlbutton">Upload</a>
+                          
+                        </div>
+                        <div>
+                            <label for="pagename">Template Files:</label>
+                    	
+                        
+                        <table class="dashtable usertbl tplfiles">
+                            <tr>
+								<td><div class="imgholder"><img src="images/green_hosting.png" class="preview" /></div></td>
+                                <td>PNG</td>
+                                <td>Green Hosting Logo</td>
+                                <td>Sep 11 2009 @ 14:00</td>
+                                <td>256kb</td>
+                                <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                            </tr>
+                            <tr class="tralt">
+                            <td><div class="imgholder"><img src="images/pixelcms-logo.png" class="preview" /></div></td>
+                            <td>JPG</td>
+                            <td>Pixel CMS Logo</td>
+                            <td>Sep 11 2009 @ 14:00</td>
+                            <td>256kb</td>
+                            <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                        </tr>
+                        <tr>
+                            <td><div class="imgholder"><img src="images/type/type_xls.png" class="preview" /></div></td>
+                            <td>XLS</td>
+                            <td>Microsoft Excel Spreadsheet</td>
+                            <td>Sep 11 2009 @ 14:00</td>
+                            <td>256kb</td>
+                            <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                        </tr>
+                        <tr class="tralt">
+                            <td><div class="imgholder"><img src="images/type/type_eps.png" class="preview" /></div></td>
+                            <td>EPS</td>
+                            <td>Adobe Illustrator EPS File</td>
+                            <td>Sep 11 2009 @ 14:00</td>
+                            <td>256kb</td>
+                            <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                        </tr>
+                        <tr>
+                            <td><div class="imgholder"><img src="images/type/type_pdf.png" class="preview" /></div></td>
+                            <td>PDF</td>
+                            <td>Adobe Portable Document Format</td>
+                            <td>Sep 11 2009 @ 14:00</td>
+                            <td>256kb</td>
+                            <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                        </tr>
+                        <tr class="tralt">
+                            <td><div class="imgholder"><img src="images/type/type_doc.png" class="preview" /></div></td>
+                            <td>DOC</td>
+                            <td>Microsoft Word Document</td>
+                            <td>Sep 11 2009 @ 14:00</td>
+                            <td>256kb</td>
+                            <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                        </tr>
+                        <tr>
+                            <td><div class="imgholder"><img src="images/type/type_sound.png" class="preview" /></div></td>
+                            <td>MP3</td>
+                            <td>Audio File MP3 Format</td>
+                            <td>Sep 11 2009 @ 14:00</td>
+                            <td>256kb</td>
+                            <td style="text-align:center;"><img src="images/icons/16/repeat.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/remove.png" align="middle" /></td>
+                                <td style="text-align:center;"><img src="images/icons/16/add.png" align="middle" /></td>
+                        </tr>       
+                        </table>
+                    
+                    
+                        </div>
+                        
+                        
+                    </fieldset>
+                    </form>
+                    
+                    </div>
+                    <p class="greyboxbottom">Confirm Changes
+                    
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/remove.png" alt="" />Cancel Changes</a>
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/accept.png" alt="" />Save Changes</a>
+                    
+                    </p>
+                </div>
+                <div class="dashfooter"></div>
+            </div>     
+                 
+   
+                 
+     
+                 
+           
+                    
+                    
+                    
+           
+        
+        </div>
+    </div>
+    <script type="text/javascript">	
+		treeObj = new JSDragDropTree();
+		treeObj.setTreeId('dhtmlgoodies_tree2');
+		treeObj.setMaximumDepth(7);
+		treeObj.setMessageMaximumDepthReached('Maximum depth reached'); // If you want to show a message when maximum depth is reached, i.e. on drop.
+		treeObj.initTree();
+		treeObj.expandAll();
+	</script>
+</body>
+</html>

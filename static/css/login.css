@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* -----------------------UPDATED 10/12/09---------------------------- */
+/* ------------------------------------------------------------------- */
+
+
+/* Global Styles  */
+
+html 											{ height:100%; min-height:100%; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; color:#d3d3d3; } 
+body 											{ background:#171717; margin:0 auto; width:650px; height:100%; min-height:100%; padding:0; }
+	#logo										{ background:url(../images/logo-login-pixel.png); width:260px; height:176px; margin-left:30px; margin-bottom:25px; }
+		#logospan								{ padding-top:140px; }
+		#logospan img							{ border:none; }
+		#logospan a								{ border:none; }
+	#panel										{ background:url(../images/login-panel-bg.jpg) no-repeat; width:645px; height:95px; margin-bottom:20px; }
+		#container 								{ margin-top:37px; float:left; color:FFF; margin-left:30px; }		
+		#left 									{ float:left; margin-right:8px; text-align:left; color:#fff; }	
+		#middle 								{ float:left; margin-right:8px; text-align:left; color:#fff; }	
+		#right 									{ padding-top:14px; float:left; }
+		.input1 								{ font-size : 11px; padding-left : 5px; padding-top : 3px; border-width : 1px; border-color : #252525; border-style : solid; height : 17px; width : 205px; }
+		.bluebutton								{ width:143px; background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -1338px; cursor:pointer; padding:6px 0; text-align:center; display: inline-block; margin-right:5px; margin-top:-16px; float:left; color:#FFF; font-size:12px; }
+		.bluebutton:hover						{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-171px -1338px; }
+	#features									{ width:580px; margin-left:30px; padding:20px 0; margin-bottom:0px; }
+		#features img							{ float:left; margin:-5px 35px 0 15px; }
+		#features .largeimg						{ float:left; margin:-15px 20px 0 0; }
+		#features p								{ margin-bottom:20px; }
+		#features .last							{ margin-bottom:20px; }
+	#footer 									{ /*background:url(../images/login-footer-bg.png) center top no-repeat;*/ width:645px; height:70px; margin:0 auto; }
+		#footer p								{ font-size:10px; padding-top:30px; width:645px; }
+		#footer img								{ float:right; margin-top:-4px; border:none; }
+		
+		#error									{ font-size:12px; 
+		padding: 10px;
+		border: 1px dashed #CC0000; width:570px; margin:0 auto; color:#fff;}
+		
+button { margin:0; padding:0; border:0; background-color:transparent; }
+		
+		/* Start Hacks */
+		
+		.ie7 #left								{ margin-right:4px; }
+		.ie7 #middle							{ margin-right:4px; }
+		.ie7 .bluebutton						{ margin-top:-15px; }
+		
+		.ie8 #footer img						{ margin-top:-4px; }
+		.ff3_5 #footer img						{ margin-top:-4px; }
+		
+		/* --- End --- */
+
+/* --- End --- */
+
+
+/* Global Navigation Styles */
+
+
+	
+				
+/* --- End --- */		
+
+
+/* Text Styles & Formatting */		
+
+h1 												{  }
+h2 												{ font: lighter large Arial, Helvetica, sans-serif; color: #FFF; padding:17px 0 0 12px; }
+h3 												{ margin:0; padding:0; }
+h4 												{ }
+h5 												{ }
+h6 												{ }
+p												{ font-family:Arial, Helvetica, sans-serif; font-size:11px; width:580px; margin-top:-15px; margin-bottom:35px; }
+#container p									{ font-size:14px; text-align:center; } 
+a												{ color: #58b8d4; text-decoration:none; }
+a:hover											{ border-bottom: 1px dotted; }
+a .white										{ color:#FFF; }	
+
+/* --- End --- */
+
+
+/* List Styles & Formatting */
+
+
+
+/* --- End --- */
+
+
+
+.error-box {
+    color: #cc0000;
+    /*color: #ccc;*/
+}
+
+.notice-box {
+    color: #E6DB55;
+    /*color: #ccc;*/
+}
+
+.success-box {
+    color: #79e18c;
+    /*color: #ccc;*/
+}
+
+.login-box {
+    color: #FFF;
+    /*color: #ccc;*/
+}
+
+.error-box, .success-box, .notice-box, .login-box {
+    /*-moz-border-radius: 6px 6px 6px 6px;
+    border-style: solid;
+    border-width: 1px;*/
+    font-size: 12px;
+    line-height: 19px;
+    margin: 10px 10px 0 10px;
+    padding: 5px 0;
+    text-align: right;
+}
+
+.pagestblicon { vertical-align: middle; margin: -3px 5px 0; }
+
+.hidden
+{
+    display:none;
+}
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* -----------------------UPDATED 10/12/09---------------------------- */
+/* ------------------------------------------------------------------- */

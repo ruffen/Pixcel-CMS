@@ -1,0 +1,7 @@
+﻿<Site>
+  <ink_customer_sites>
+    <id>siteId</id>
+    <name>sitename</name>
+    <path>sitepath</path>
+  </ink_customer_sites>
+</Site>

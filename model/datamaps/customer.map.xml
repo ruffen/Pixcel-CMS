@@ -1,0 +1,9 @@
+﻿<Customer>
+  <ink_customer>
+    <id>customerId</id>
+    <name>customerName</name>
+    <site type="object" pk="customerId">
+      <object relation="1">Site</object>
+    </site>
+  </ink_customer>
+</Customer>

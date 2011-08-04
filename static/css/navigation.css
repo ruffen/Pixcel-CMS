@@ -1,0 +1,173 @@
+@charset "UTF-8";
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* ----- ALL DESIGN AND CSS IS COPYRIGHT INK AUSTRALASIA PTY LTD ----- */
+/* ---- FOR INFORMATION PLEASE CONTACT INFO@INKADVERTISING.COM.AU ---- */
+/* ------------------------------------------------------------------- */
+/* -----------------------UPDATED 08/01/10---------------------------- */
+/* ------------------------------------------------------------------- */
+
+
+/* Main Navigation Styles */
+
+#navigation										{ float:left; margin:0; padding:0; }
+#navigation li									{ float:left; display:inline; width:100px; height:123px; color:#FFF; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:12px; }
+	#navigation li:hover a 						{ color: #58b8d4; }
+	
+	.dash										{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -148px; }
+	.dash:hover									{  background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -148px; }
+	.dash-selected								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -148px; }
+	
+	
+	.stats										{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -291px; }
+	.stats:hover								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -291px; }
+	.stats-selected								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -291px; }
+	
+	.system										{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -434px; }
+	.system:hover								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -434px; }
+	.system-selected							{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -434px; }
+	
+	.users										{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -577px; }
+	.users:hover								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -577px; }
+	.users-selected								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -577px; }
+	
+	.pages										{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -720px; }
+	.pages:hover								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-139px -720px; }
+	.pages-selected								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-139px -720px; }
+	
+	.files										{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -863px; }
+	.files:hover								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -863px; }
+	.files-selected								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -863px; }
+	
+	.modules									{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -1006px; }
+	.modules:hover								{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-130px -1006px; }
+	/*#navigation .modules:hover a				{ color: #383737; }*/
+	#navigation .modules ul a						{ color: #FFF; }
+	#navigation .modules ul a:hover					{ color: #58b8d4; }
+	/*#navigation .modules a:hover				{ color: #383737; }*/
+	
+	#navigation a								{ color: #FFF; text-decoration:none; float:left; text-align:center; width:100px; padding:80px 0 15px 0; font-family:Arial, Helvetica, sans-serif !important; }
+	#navigation a:hover							{ color: #58b8d4; }
+	
+				
+/* --- End --- */
+
+
+/* Sub Navigation Styles */
+
+.subnav								{ margin:0; padding:0; }
+	.subnav li						{ list-style-image:none; display:block; background-image:url(../images/sprite-dash-bg.png); background-position:0px -10px; height:43px; margin:0; border-bottom:1px solid #afaeae; font-size:13px; color:#3f3f3f; }
+	.subnav li.red:hover			{ list-style-image:none; display:block; background-image:url(../images/sprite-dash-bg.png); background-position:0px -295px; }
+	.ie7 .subnav li					{ margin-bottom:-3px; }
+	.subnav li:hover				{ list-style-image:none; display:block; background-image:url(../images/sprite-dash-bg.png); background-position:0px -295px; }
+	.subnav img						{ float:left; margin-left:15px; margin-right:14px; margin-top:-3px; border:none; }
+	.subnav a						{ color:#3f3f3f; float:left; width:100%; margin:0; padding:12px 0 9px 0; }
+	.subnav a:hover					{ color:#000; }
+	
+/* --- End --- */	
+
+
+#module-picker ul {
+	margin:0;
+	padding:0;
+	background: #171717;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	border-bottom:1px solid #565044;
+	border-left:1px solid #565044;
+	border-right:1px solid #565044;
+	display:none;	
+	list-style:none outside none;
+	padding-bottom:10px;
+	padding-top:10px;
+	position:absolute;
+	top:149px;
+	margin-left:2px;
+	width:150px;
+	z-index:1001;
+}
+
+.ie7 #module-picker ul {
+	margin-left:-99px;
+
+}
+
+#navigation #module-picker ul li { margin:0; padding:0; float:left; width:100%; height:43px; color:#FFF; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:12px;  }
+#navigation #module-picker ul li:hover {background:#333333; height:43px; }
+
+
+#module-picker ul li a { width:100%; text-align:left; font-size: 11px; line-height: 43px; padding:0; }
+
+#module-picker:hover { }
+.modules:hover #module-picker ul { display: block; }
+.modules:hover #module-picker ul { display: block; }
+
+#module-picker ul img {
+	border:none;
+	float:left;
+	padding-top:8px;
+	margin-right:10px;
+	margin-left:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#settings-picker ul {
+	margin:0;
+	padding:0;
+	background: #171717;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	border-bottom:1px solid #565044;
+	border-left:1px solid #565044;
+	border-right:1px solid #565044;
+	
+	
+	border-radius:5px;
+	-moz-border-radius:5px;
+	border:1px solid #565044;
+	
+	display:none;	
+	list-style:none outside none;
+	padding-bottom:10px;
+	padding-top:10px;
+	position:absolute;
+	top:31px;
+	margin-left:0;
+	width:150px;
+	z-index:1001;
+}
+
+.ie7 #settings-picker ul {
+	margin-left:-99px;
+
+}
+
+#global #settings-picker ul li { margin:0; padding:0; float:left; width:100%; height:35px; color:#FFF; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:12px;  }
+#global #settings-picker ul li:hover {background:#333333; height:35px; }
+
+
+#global #settings-picker ul li a { width:100%; text-align:left; font-size: 11px; line-height: 35px; padding:0; float:left; }
+
+#settings-picker:hover { }
+.system:hover #settings-picker ul { display: block; }
+.system-selected:hover #settings-picker ul { display: block; }
+
+.systembutton:hover #settings-picker ul { display: block; }
+
+
+#settings-picker ul img {
+	border:none;
+	float:left;
+	padding-top:8px;
+	margin-right:7px;
+	margin-left:17px;
+}		

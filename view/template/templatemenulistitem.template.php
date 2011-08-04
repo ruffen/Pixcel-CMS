@@ -1,0 +1,1 @@
+                                	<li><img src="/static/images/icons/16/page_process.png" alt="" /><a href="/template/gettemplate" id="tpl_<?php echo $tpl->getId();?>"><?php echo $tpl->getName();?></a></li>

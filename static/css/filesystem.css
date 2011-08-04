@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* ----- ALL DESIGN AND CSS IS COPYRIGHT INK AUSTRALASIA PTY LTD ----- */
+/* ---- FOR INFORMATION PLEASE CONTACT INFO@INKADVERTISING.COM.AU ---- */
+/* ------------------------------------------------------------------- */
+/* -----------------------UPDATED 08/01/10---------------------------- */
+/* ------------------------------------------------------------------- */
+
+
+/* Custom Styles and Formatting for Pages Module */
+
+.language  								{ height:20px; padding:0 0 3px 0; float:right; margin:-2px 10px 0 0; font-size:12px; }
+
+	
+	/* Start Hacks */
+	
+	.ie7 .language						{ margin-top:-50px; }
+	.ff3_5 .language					{ margin-top:-2px; }
+	
+	/* End Hacks */
+	
+		.language option				{ padding:2px 2px 2px 20px; }
+		
+		.filetable #fileoptions					{ font-size:9px; color:#666666; font-weight:100; }
+		
+.separator								{ background:url(../images/separator.jpg) no-repeat center; height:40px; }		
+
+/* --- End --- */
+
+
+/* Drag and Drop File Tree */
+
+.file_tree, #file_tree_float 					{ margin:0px; padding:20px; }
+	.file_tree ul 								{ margin-left:20px; padding-left:0px; display:none; }
+		.file_tree li, #file_tree_float li 		{ list-style-type:none; vertical-align:middle; }
+			.file_tree li a, #file_tree_float a { text-decoration:none; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding-left:1px; line-height:1.9; margin-left:2px; list-style-position: 		 												   												  0.5px; border:none; }
+				.file_tree li a:hover 			{ text-decoration:underline; }
+				
+/* --- End --- */
+
+
+/* FMS Table Styles and Formatting */
+
+
+.filetable						   		{ width:100%; /*padding:0px 10px 0px;*/ margin-bottom:10px; margin-top:5px; border-collapse:collapse; font-size:11px; line-height:1.5; color:#666; }
+
+	/* Start Hacks */
+	
+	.ie7 .filetable							{ margin-bottom:0px; }
+	.ie7 .filetable thead tr th				{ border-bottom:1px solid #999; }
+	
+	/* End Hacks */
+
+.filetable thead, .filetable tfoot 		{ padding:10px 0; margin:0; background: #F9F9F9; }
+.filetable thead tr						{ border-bottom:1px solid #999; padding:10px 0px; height:40px; }
+.filetable tfoot tr						{ padding:10px 0px; height:40px; border-bottom:none; }
+
+.filetable tbody tr:hover				{ background: url(../images/table_hover_bg.png) repeat; color:#000; }
+.filetable td							{ border-bottom:1px solid #999; vertical-align:middle; height:30px; padding:0px 5px 0px 5px; }
+.filetable th							{ padding:0px 10px 0px 5px; font-weight:normal; }
+.imgholder								{ width:130px; height:70px; }
+.preview								{ margin-top:0px; max-width:120px; max-height:60px; }
+.filetable .bold									{ font-weight:bold; }
+
+
+/* --- End --- */
+
+
+
+				
+			
+
+

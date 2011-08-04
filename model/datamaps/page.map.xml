@@ -1,0 +1,26 @@
+﻿<Page>
+  <ink_pages>
+    <id>pageId</id>
+    <created>dateCreated</created>
+    <changed>dateUpdated</changed>
+    <published>published</published>
+    <parent>parentId</parent>
+    <order>pageOrder</order>
+    <author>authorId</author>
+    <siteId>siteId</siteId>
+    <template type="object" pk="templateId">
+      <object relation="1">Template</object>
+    </template>
+    <lang type="array" fk="pageId" pk="languageId">
+      <ink_pages_languages>
+        <id>languageId</id>
+        <title>title</title>
+        <description>meta_description</description>
+        <keywords>meta_keywords</keywords>
+      </ink_pages_languages>
+    </lang>
+    <role type="array" pk="roleId" fk="pageId" join="ink_pages_in_roles">
+      <object relation="n">Role</object>
+    </role>
+  </ink_pages>
+</Page>

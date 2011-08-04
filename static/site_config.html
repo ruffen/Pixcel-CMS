@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pixel CMS&trade;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/browser_selector.js" type="text/javascript"></script>
+<link href="css/master.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/pages.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 7]> <link href="css/ie7.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+<!--[if IE 6]> <link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+
+
+
+<!-- Start PHP File Tree -->
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/context-menu.js"></script><!-- IMPORTANT! INCLUDE THE context-menu.js FILE BEFORE drag-drop-folder-tree.js -->
+<script type="text/javascript" src="js/drag-drop-folder-tree-pms.js"></script>
+<!-- End PHP File Tree -->
+
+
+
+</head>
+
+<body>
+	<div id="preamble">
+    	<div id="inklogo">
+        	<a href="http://www.inkadvertising.com.au"><img src="images/ink-logo.jpg" alt="" /></a>
+            <p>
+            	&copy; Copyright Ink Australasia Pty. Ltd. | ABN 13 134 355 712            
+            </p>    
+      </div>
+        <div id="user">
+        	<div class="userbutton" onclick="javascript:window.location='user_profile.html'"><img src="images/icons/16/user.png" alt="" />Patrick Jones</div>
+            <div class="helpbutton"></div>
+            <div class="logoutbutton" onclick="javascript:window.location='index.html'"><img src="images/icons/16/back.png" alt="" />Logout User</div>
+        </div>
+    </div>
+    <div id="header">
+    	<div id="pixelcmslogo">
+    		<a href="index.html"><img src="images/pixelcms-logo.png" alt=""  /></a>
+        </div>
+        <div id="menu">
+        	<ul id="navigation">
+            	<li class="dash"><a href="dashboard.html">Dashboard</a></li>
+                <li class="stats"><a href="stats.html">Statistics</a></li>
+                <li class="system-selected"><a href="#">System</a>
+                	<div id="module-picker">
+                        <ul>
+                          <li><a href="site_config.html"><img src="images/icons/24/home_next.png" alt="" width="24" height="24" /> Site Configuration</a></li>
+                          <li><a href="templates.html"><img src="images/icons/24/page_process.png" alt="" width="24" height="24" /> Templates</a></li>
+                          <li><a href="rollbacks.html"><img src="images/icons/24/database_previous.png" alt="" width="24" height="24" /> Rollbacks</a></li>
+                          <li><a href="reseller.html"><img src="images/icons/24/favorite_add.png" alt="" width="24" height="24" /> Reseller Settings</a></li>
+                        </ul>
+                      </div>
+                </li>
+                <li class="users"><a href="users.html">Users/Groups</a></li>
+                <li class="pages"><a href="pages.html">Pages</a></li>
+                <li class="files"><a href="files.html">File System</a></li>
+            </ul>
+        </div>        
+    </div>
+    <div style="clear: both;"></div>
+    <div id="content">
+    
+    
+    	<div id="leftcol">
+        
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/home_process.png" align="left" class="icon" />Menu</h2>
+                    <p>Use these options to create and remove website configurations</p>
+                </div>
+                <div class="dashcontent">
+                	<ul class="subnav">
+                        <li><a href="#"><img src="images/icons/24/home_add.png" alt="Create New Page" /> Create New Website</a></li>
+                        <li><a href="#"><img src="images/icons/24/home_remove.png" alt="Delete Current Page" /> Delete Current Website</a></li>
+                    </ul>       
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+                                
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/application.png" align="left" class="icon" />Websites</h2>
+                    <p>View and update your Websites</p>
+                </div>
+                <div class="dashcontent">
+                    
+                        <ul class="file_tree">
+                            <li><img src="images/icons/16/home.png" alt="" /><a href="#">http://www.abc.com.au</a></li>
+                            <li><img src="images/icons/16/home.png" alt="" /><a href="#">http://www.companysite.com.au</a></li>
+                        </ul>    
+                                
+ 
+                     
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+        
+        </div>
+        
+        
+        <div id="rightcol">
+        
+             <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/info.png" align="left" class="icon" />Website Configuration</h2>
+                    <p>Set up and customise your website</p>
+                </div>
+                <div class="dashcontent">
+                	<h3><img src="images/icons/48/home.png" alt="" class="site" />http://www.abc.com.au</h3>
+                    <div class="separator"></div>
+                    
+                    
+                    <div class="forms">	
+                    <form action="#" method="get">
+                    
+                    <fieldset>
+    
+                        <legend><span>Website Configuration</span></legend>
+                        <div>
+                            <label for="siteurl">Site Title:</label>
+                            <input name="pagename" id="pagename" type="text" value="ABC Company Site" />
+                          
+                        </div>
+                    </fieldset>    
+                        
+                    <fieldset>    
+                        <div>
+                            <label for="siteurl">Website URL:</label>
+                            <input name="pagename" id="pagename" type="text" value="http://www.abc.com.au" />
+                          
+                        </div>
+                        <div>
+                            <label for="pagename">Server:</label>
+                    	
+                        
+                        <select name="server" id="server" style="width:75px;">
+                            <option value="FTP">FTP</option>
+                            <option value="SFTP">SFTP</option>
+                        </select>
+                        
+                        
+                        <input name="pagename" id="pagename" type="text" style="width:205px;" value="ftp.abc.com.au" />
+
+						<input type="checkbox" name="pasv" /> PASV
+                    
+                    
+                        </div>
+                        <div>
+                            <label for="pagename">Port:</label>
+                            <input name="pagename" id="pagename" type="text" value="21" style="width:75px;" />
+    
+                        </div>
+                        <div>
+                            <label for="pagename">Username:</label>
+                            <input name="pagename" id="pagename" type="text" value="admin" />
+    
+                        </div>
+                        <div>
+                            <label for="pagename">Password:</label>
+                            <input name="pagename" id="pagename" type="password" value="password" />&nbsp;<a id="change_password_submit" href="#" class="smlbutton">Test...</a>
+                        </div>
+                        <div>
+                        	<label>Website Root:</label>    
+                            <input name="pagename" id="pagename" type="text" value="/httpdocs/" />&nbsp;<a id="change_password_submit" href="#" class="smlbutton">Browse...</a>
+                            
+    
+                        </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                        
+                        <div>
+                       
+                        
+                        <label>Path to Images:</label>    
+                            <input name="pagename" id="pagename" type="text" value="/__images/" />
+                        </div>
+                        <div>
+                        
+                        <label>Path to Documents:</label>    
+                            <input name="pagename" id="pagename" type="text" value="/__documents/" />
+                        </div>
+                        <div>
+                        
+                        <label>Path to Media:</label>    
+                            <input name="pagename" id="pagename" type="text" value="/__media/" />
+                        </div>
+                        <!--<div id="submit">
+                            <input name="go" id="go" type="image" value="go" src="images/go.jpg" />
+                        </div>-->
+                    </fieldset>
+                    </form>
+                    
+                    </div>
+                    <p class="greyboxbottom">Confirm Changes
+                    
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/remove.png" alt="" />Cancel Changes</a>
+                    <a id="change_password_submit" href="#" class="button"><img src="images/icons/16/accept.png" alt="" />Save Changes</a>
+                    
+                    </p>
+                </div>
+                <div class="dashfooter"></div>
+            </div>     
+                 
+   
+                 
+     
+                 
+           
+                    
+                    
+                    
+           
+        
+        </div>
+    </div>
+    <script type="text/javascript">	
+		treeObj = new JSDragDropTree();
+		treeObj.setTreeId('dhtmlgoodies_tree2');
+		treeObj.setMaximumDepth(7);
+		treeObj.setMessageMaximumDepthReached('Maximum depth reached'); // If you want to show a message when maximum depth is reached, i.e. on drop.
+		treeObj.initTree();
+		treeObj.expandAll();
+	</script>
+</body>
+</html>

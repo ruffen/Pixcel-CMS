@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pixel CMS&trade;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/browser_selector.js" type="text/javascript"></script>
+<link href="css/master.css" rel="stylesheet" type="text/css" media="screen" />
+<!--[if IE 7]> <link href="css/ie7.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+<!--[if IE 6]> <link href="css/ie6.css" rel="stylesheet" type="text/css" media="screen" /> <![endif]-->
+<link rel="stylesheet" href="css/jquery.checkbox.css" />
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script type="text/javascript" src="js/jquery.checkbox.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('input:checkbox:not([safari])').checkbox();
+		$('input[safari]:checkbox').checkbox({cls:'jquery-safari-checkbox'});
+		$('input:radio').checkbox();
+	});
+</script>
+        
+</head>
+
+<body>
+	<div id="preamble">
+    	<div id="inklogo">
+        	<a href="http://www.inkadvertising.com.au"><img src="images/ink-logo.jpg" alt="" /></a>
+            <p>
+            	&copy; Copyright Ink Australasia Pty. Ltd. | ABN 13 134 355 712            
+            </p>    
+      </div>
+        <div id="user">
+        	<div class="userbutton"><img src="images/icons/16/user.png" alt="" />Patrick Jones</div>
+            <div class="helpbutton"></div>
+            <div class="logoutbutton" onclick="javascript:window.location='index.html'"><img src="images/icons/16/back.png" alt="" />Logout User</div>
+        </div>
+    </div>
+    <div id="header">
+    	<div id="pixelcmslogo">
+    		<a href="index.html"><img src="images/pixelcms-logo.png" alt=""  /></a>
+        </div>
+        <div id="menu">
+        	<ul id="navigation">
+            	<li class="dash-selected"><a href="dashboard.html">Dashboard</a></li>
+                <li class="stats"><a href="stats.html">Statistics</a></li>
+                <li class="system"><a href="system.html">System</a></li>
+                <li class="users"><a href="users.html">Users/Groups</a></li>
+                <li class="pages"><a href="pages.html">Pages</a></li>
+                <li class="files"><a href="files.html">File System</a></li>
+                <li class="enews"><a href="#">eNewsletters</a></li>
+            </ul>
+        </div>        
+    </div>
+    <div id="content">
+    	<div id="leftcol">
+        
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/database_process.png" align="left" class="icon" />System</h2>
+                    <p>Last Rollback Created Monday 21 December 2009</p>
+                </div>
+                <div class="dashcontent">
+                    <p class="greybox">Create Rollback Point <span class="greyboxbutton">Create Rollback</span></p>
+                    <p class="greybox">Rollback System <span class="greyboxbutton">Rollback System</span></p>       
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+                                
+            <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/rss.png" align="left" class="icon" />News</h2>
+                    <p>Last updated Monday 21 December 2009</p>
+                </div>
+                <div class="dashcontent">
+                    <p class="greybox">Email News Updates<span class="greyboxcheck"><input type="checkbox" name="checkbox[]" class="top5" /></span></p>
+                    <p>
+                        The current ink'd system has been updated to Version 2.0.1 - This update includes the following enhancements: 
+                    </p>
+                
+                    <p><strong>Pages</strong></p>
+                    <ol>
+                        <li>Drag and drop menu position</li>
+                        <li>Multiple Websites/Intranets</li>
+                        <li>Updated Meta Data for SEO</li>
+                        <li>Ability to Password Protect a Parent page (and subsequently all children pages within it)</li>
+                        <li>Status of Page (Published, Saved, Hidden, Active, Protected)</li>
+                        <li>Updated WYSIWYG Editor that will allow insertion of Forms, Movies, Audio, Copy & Paste from Word and full screen edit mode)</li>
+                        <li>Page Revision History (Last 5 Changes)</li>
+                        <li>User friendly page names (about instead of 23478fger2we4)</li>
+                    </ol> 
+                    
+                    <p><strong>File System</strong></p>
+                    <ol>
+                        <li>Drag and drop menu position</li>
+                        <li>Multiple Websites/Intranets</li>
+                        <li>Updated Meta Data for SEO</li>
+                        <li>Ability to Password Protect a Parent page (and subsequently all children pages within it)</li>
+                        <li>Status of Page (Published, Saved, Hidden, Active, Protected)</li>
+                        <li>Updated WYSIWYG Editor that will allow insertion of Forms, Movies, Audio, Copy & Paste from Word and full screen edit mode)</li>
+                        <li>Page Revision History (Last 5 Changes)</li>
+                        <li>User friendly page names (about instead of 23478fger2we4)</li>
+                    </ol> 
+                     
+                </div>
+                <div class="dashfooter"></div>
+            </div>
+        
+        </div>
+        
+        
+        <div id="rightcol">
+        
+             <div class="dashcontainer">
+                <div class="dashheading">
+                    <h2><img src="images/icons/24/chart.png" align="left" class="icon" />Site Activity</h2>
+                    <p>The following is for the month of December 2009</p>
+                </div>
+                <div class="dashcontent">
+                  <script type="text/javascript" src="js/swfobject.js"></script>
+                    <div id="flashcontent">
+                        <strong>You need to upgrade your Flash Player</strong>
+                    </div>
+                
+                    <script type="text/javascript">
+                        // <![CDATA[		
+                        var so = new SWFObject("flash/charts.swf", " ", "100%", "350", "8", "#FFFFFF");
+                        so.addVariable("path", "xml/");
+                        so.addVariable("settings_file", encodeURIComponent("xml/amline_settings.xml"));
+                        so.addVariable("data_file", encodeURIComponent("xml/amline_data.xml"));
+                        so.write("flashcontent");
+                        // ]]>
+                    </script> 
+                </div>
+                <div class="dashfooter"></div>
+            </div> 
+                    
+                    
+                    
+            <div id="subcolleft">
+            
+                <div class="dashcontainer">
+                    <div class="dashheading">
+                        <h2><img src="images/icons/24/page_accept.png" align="left" class="icon" />Pages Awaiting Approval</h2>
+                        <p>These pages require approval before being published</p>
+                    </div>
+                    <div class="dashcontent">
+                        <p class="greybox">Email Page Approvals<span class="greyboxcheck"><input type="checkbox" name="checkbox[]" class="top5" /></span></p>
+                        <table class="dashtable">
+                            <tr>
+                                <td width="30%"><a href="#">Index</a></td>
+                                <td>pjones</td>
+                                <td>Mon 13 Jan 21:00</td>
+                                <td><img src="images/icons/16/accept.png" alt="" /> </td>
+								<td><img src="images/icons/16/remove.png" alt="" /></td>
+                            </tr>
+                            <tr class="tralt">    
+                                <td><a  href="#">About Us</a></td>
+                                <td>pjones</td>
+                                <td>Mon 13 Jan 21:00</td>
+                                <td><img src="images/icons/16/accept.png" alt="" /> </td>
+								<td><img src="images/icons/16/remove.png" alt="" /></td>
+                            </tr>  
+                            <tr> 
+                                <td><a  href="#">Services</a></td>
+                                <td>pjones</td>
+                                <td>Mon 13 Jan 21:00</td>
+                                <td><img src="images/icons/16/accept.png" alt="" /> </td>
+								<td><img src="images/icons/16/remove.png" alt="" /></td>
+                            </tr>
+                            <tr class="tralt">   
+                                <td><a  href="#">Portfolio</a></td>
+                                <td>pjones</td>
+                                <td>Mon 13 Jan 21:00</td>
+                                <td><img src="images/icons/16/accept.png" alt="" /> </td>
+								<td><img src="images/icons/16/remove.png" alt="" /></td>
+                            </tr>
+                            <tr>    
+                                <td><a  href="#">Contact Us</a></td>
+                                <td>pjones</td>
+                                <td>Mon 13 Jan 21:00</td>
+                                <td><img src="images/icons/16/accept.png" alt="" /> </td>
+								<td><img src="images/icons/16/remove.png" alt="" /></td>
+                            </tr>
+                            <tr class="tralt">    
+                                <td><a  href="#">Client Testimonials</a></td>
+                                <td>pjones</td>
+                                <td>Mon 13 Jan 21:00</td>
+                                <td><img src="images/icons/16/accept.png" alt="" /> </td>
+								<td><img src="images/icons/16/remove.png" alt="" /></td>
+                            </tr>       
+                        </table> 
+                         
+                    </div>
+                    <div class="dashfooter"></div>
+            	</div>
+            
+            </div>
+            
+            <div id="subcolright">
+            
+            
+            	<div class="dashcontainer">
+                    <div class="dashheading">
+                        <h2><img src="images/icons/24/page_up.png" align="left" class="icon" />Published Pages</h2>
+                        <p>Recently updated pages</p>
+                    </div>
+                    <div class="dashcontent">
+                        
+                        <table class="dashtable">
+                                	<tr>
+                                        <td width="45%"><a class="blue" href="#">Index Page</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>
+                                    <tr class="tralt">    
+                                    	<td><a class="blue" href="#">About Us</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>  
+                                    <tr> 
+                                    	<td><a class="blue" href="#">Services</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>
+                                    <tr class="tralt">    
+                                    	<td><a class="blue" href="#">Portfolio</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>
+                                    <tr>   
+                                    	<td><a class="blue" href="#">Contact Us</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>   
+                                    <tr class="tralt"> 
+                                        <td><a class="blue" href="#">Communication</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>
+                                    <tr>    
+                                    	<td><a class="blue" href="#">Marketing</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                       
+                                    </tr>  
+                                    <tr class="tralt">  
+                                    	<td><a class="blue" href="#">Products</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                      
+                                    </tr>
+                                    <tr>   
+                                    	<td><a class="blue" href="#">Locations</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>
+                                    <tr class="tralt">    
+                                    	<td><a class="blue" href="#">Reviews</a></td>
+                                        <td>pjones</td>
+                                        <td>Mon 13 Jan 21:00</td>
+                                        
+                                    </tr>   
+                                </table>
+                         
+                    </div>
+                    <div class="dashfooter"></div>
+            	</div>  
+            
+            </div>          
+        
+        </div>
+    </div>
+</body>
+</html>

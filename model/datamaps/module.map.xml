@@ -1,0 +1,13 @@
+﻿<module>
+  <ink_modules>
+    <id>moduleId</id>
+    <name>moduleName</name>
+    <route>routeName</route>
+    <standard>standardmodule</standard>
+    <index>cmsIndex</index>
+    <prio>priority</prio>
+    <role type="array" pk="roleId" fk="moduleId" join="ink_modules_in_roles">
+      <object relation="n">Role</object>      
+    </role>
+  </ink_modules>
+</module>

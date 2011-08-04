@@ -1,0 +1,7 @@
+<Spot>
+  <ink_spots>
+    <id>spotId</id>
+    <name>spotName</name>
+    <class>spotClass</class>
+  </ink_spots>
+</Spot>

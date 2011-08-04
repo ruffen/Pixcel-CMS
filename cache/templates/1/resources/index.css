@@ -1,0 +1,192 @@
+@charset "utf-8";
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* ----- ALL DESIGN AND CSS IS COPYRIGHT INK AUSTRALASIA PTY LTD ----- */
+/* ---- FOR INFORMATION PLEASE CONTACT INFO@INKADVERTISING.COM.AU ---- */
+/* ------------------------------------------------------------------- */
+/* -----------------------UPDATED 08/01/10---------------------------- */
+/* ------------------------------------------------------------------- */
+
+
+/* Global Styles  */
+
+html 									{ height:100%; min-height:100%; min-width:980px; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; background:url(../images/imgrotate/bluesky.jpg) #0e0e0e repeat-x 0px 78px; } 
+body 									{ margin:0 auto; min-width:980px; height:100%; min-height:100%; text-align:center; padding:0; background:url(../images/header-bg.png) repeat-x; }
+.preamble								{ width:950px; margin:0 auto;  padding:0 15px; }
+	#header								{ height:90px; width:965px; margin:0; padding:0; float:left;   }
+		#logo							{ height:79px; width:164px; float:left; }
+		#logo img, #logo a				{ border: none; }
+		
+	#product							{ width:963px; margin:0 auto; padding:0; float:left; margin-top:-10px; margin-left:-13px;  }
+		#productimg						{ width:503px; height:390px; float:left; margin-left:-50px; }
+		#producttxt						{ width:430px; float:right; margin:75px 0 0 0; text-align:left;  }	
+		#producttxt p					{ font-family: "Trebuchet MS",serif; font-size: 15px; color:#FFF; }
+		#producttxt .button				{ margin:68px 15px 0 0; float:left; border:none; }
+		.ie7 #producttxt .button		{ margin:57px 15px -3px 0; float:left; border:none; }
+		
+	#columns							{ width:100%; margin:0 auto; padding:0; float:left; text-align:left; line-height:20px; background:#f4f5f4; margin-top:8px; border-top:1px solid #eaeaea; padding-top:15px;  }
+		#columns .top						{ float:left; margin:7px 10px 0 0; }
+		.ie7 #columns .top					{ float:left; margin:0px 10px 0 0; }
+		#columns .bottom					{ float:left; margin:-5px 10px 0 0; }
+		#columns p							{ font:Arial, Helvetica, sans-serif; font-size:13px; color:#777e87; margin-top:17px; margin-bottom:30px; }
+		#columns .note						{ font-size: xx-small; margin-top:-25px; }
+		.ie7 #columns p						{ margin-top:24px; }
+			#col1							{ float:left; width:234px; margin:0; padding:0; margin-right:20px; }
+			#col2							{ float:left; width:220px; margin-right:16px; }
+			#col3							{ float:left; width:220px; margin-right:16px; }
+			#col4							{ float:left; width:220px; }
+		
+	#footer									{ width:100%; margin:0 auto; padding:0; background:url(../images/footer-main-bg.jpg) repeat-x; height:287px; float:left; text-align:left;  }
+		#footercol1							{ float:left; width:300px; margin:0; padding:25px 0 0 0; margin-right:10px; background:url(../images/footer-divider.jpg) no-repeat 100% 27px; height:245px; }
+		#footercol2							{ float:left; width:220px; margin-right:30px; padding:25px 0 0 0; margin-left:33px; }
+		#footercol3							{ float:left; width:300px; padding:25px 0 0 0; margin-left:30px; }
+		#footerul1							{ list-style-type:none; margin:0; padding:0; margin-top:25px; }
+			#footerul1 img					{ float:left; margin-top:6px; margin-right:10px; border:none; }
+			#footerul1 li					{ font-family: "Trebuchet MS",serif; font-size:17px; color:#FFF; height:43px; line-height:2.5; }
+			#footerul1 .small				{ font-size:14px; line-height:3; }
+		#footerul2							{ list-style-type:none; margin:0; padding:0; margin-top:25px; }
+			#footerul2 img					{ float:right; margin-top:5px; border:none; }
+			#footerul2 li					{ font-family: "Trebuchet MS",serif; font-size:14px; color:#8f8f8f; line-height:2.8; height:38px; border-bottom:1px solid #3e3e3e; }
+			#footerul2 li a					{ color:#8f8f8f; border:none; }
+			
+		#footer p							{ font:Arial, Helvetica, sans-serif; font-size:12px; color:#777e87; margin-top:17px; line-height:1.3; }
+		
+		fieldset.subscribe {
+			border: none;
+			width: 342px;
+			margin: 0 auto;
+			padding:14px 0 0 0;
+		}
+		.subscribe input, .subscribe button {
+			border: none;
+			float: left;
+		}
+		.subscribe input.box {
+			color: #545961;
+			font-size: 13px;
+			width: 198px;
+			height: 37px;
+			padding: 10px 0px 0px 14px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat;
+		}
+		.mac .subscribe input.box {
+			color: #545961;
+			font-size: 13px;
+			width: 198px;
+			height: 37px;
+			padding: 0px 0px 0px 14px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat;
+		}
+		.gecko .subscribe input.box {
+			color: #545961;
+			font-size: 13px;
+			width: 198px;
+			height: 37px;
+			padding: 0px 0px 0px 14px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat;
+		}
+		.ie7 .subscribe input.box {
+			padding: 10px 0px 0px 14px;
+		}
+		/*.subscribe input.box:focus {
+			background:#fff url(../images/footer-subscribe-bg.jpg) no-repeat left -38px;
+			outline: none;
+		}*/
+		.subscribe button.btn {
+			width: 105px;
+			height: 37px;
+			cursor: pointer;
+			text-indent: -9999px;
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat top right;
+		}
+		.subscribe button.btn:hover {
+			background:url(../images/footer-subscribe-bg.jpg) no-repeat top right;
+		}
+		
+		
+		#credits							{ width:100%; color:#FFF; height:52px; margin:0 auto; padding:0; float:left; font-size:11px; }
+			#creditsleft					{ float:left; padding:20px 0 0 0; }
+				#creditsleft img				{ float:left; margin:-10px 10px 0 0; border:none; }
+			#creditsright					{ float:right; padding:20px 0 0 0; }
+		
+		
+		a									{ color:#03caf3; border-bottom:1px solid; text-decoration:none; }
+		a:hover								{ color:#000; }
+		
+		#footer a							{ color:#03caf3; border-bottom:1px solid; text-decoration:none; }
+		#footer a:hover						{ color:#FFF; }
+		
+		#credits a							{ color:#03caf3; border-bottom:1px solid; text-decoration:none; }
+		#credits a:hover					{ color:#FFF; }
+		
+		
+		
+		h2								{ font-family: "Trebuchet MS",serif; font-size: 16px; color:#545961; font-weight:100; }
+		.largeh2						{ font-family: "Trebuchet MS",serif; font-size: 31px; color:#545961; font-weight:100; margin-top:12px; margin-bottom:-5px; }
+		.ie7 .largeh2					{ margin-top:5px; }
+		.smallh2						{ font-family: "Trebuchet MS",serif; font-size: 12px; color:#545961; font-weight:100; }
+		
+		#footer h2						{ font-family: "Trebuchet MS",serif; font-size: 20px; color:#03caf3; font-weight:100; }
+		
+
+/* --- End --- */
+
+
+/* Main Navigation Styles */
+
+#navigation										{ float:right; margin:0; padding:0; font-family: "Trebuchet MS",serif; font-size: 15px; margin-right:20px; }
+#navigation li									{ float:left; display:inline; width:100px; height:97px; color:#FFF; text-align:center; }
+#navigation .last								{ width:126px; height:39px; background:url(../images/button-login.png) no-repeat; margin:20px 0 0 10px; }
+	#navigation li:hover						{ background:url(../images/nav-hover-bg.png) bottom center no-repeat; }
+	#navigation .last:hover						{ background:url(../images/button-login-hover.png) no-repeat; }
+	#navigation .selected						{ background:url(../images/nav-hover-bg.png) bottom center no-repeat; }
+	#navigation .selected a 					{ color: #33ccff; }
+	#navigation li:hover a 						{ color: #33ccff; }
+	#navigation a								{ color: #FFF; text-decoration:none; float:left; text-align:center; width:100px; margin:0; padding:30px 0 40px 0; float:left; border:none;}
+	#navigation a:hover							{ color: #33ccff; }
+	#navigation .last a							{ width:126px; }
+	
+				
+/* --- End --- */
+
+#module-picker ul {
+	margin:0;
+	padding:0;
+	background: url(../images/module-hover-bg.jpg) #000;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	border-bottom:1px solid #565044;
+	border-left:1px solid #565044;
+	border-right:1px solid #565044;
+	display:none;	
+	list-style:none outside none;
+	padding-bottom:10px;
+	padding-top:10px;
+	position:absolute;
+	top:79px;
+	margin-left:2px;
+	width:150px;
+	z-index:1001;
+}
+
+.ie7 #module-picker ul {
+	margin-left:-99px;
+
+}
+
+#navigation #module-picker ul li { margin:0; padding:0; float:left; width:100%; height:43px; color:#FFF; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:12px;  }
+#navigation #module-picker ul li:hover {background:#333333; height:41px; border-bottom:1px solid #666666; border-top:1px solid #666666; }
+
+
+#module-picker ul li a { width:100%; text-align:left; font-size: 11px; line-height: 43px; padding:0; }
+
+#module-picker:hover { }
+.last:hover #module-picker ul { display: block; }
+
+#module-picker ul img {
+	border:none;
+	float:left;
+	padding-top:8px;
+	margin-right:10px;
+	margin-left:10px;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="description" content="">
+<meta name="keywords" content=""> 
+<title>ink'd | ink.</title> 
+<link href="css/global.css" rel="stylesheet" type="text/css" />
+<script src="js/equalcolumns.js" type="text/javascript"></script>
+<script src="js/browser_selector.js" type="text/javascript"></script>
+<script src="js/mootools-1.2.3-core-yc.js"></script>
+<script src="js/blockUi.js" type="text/javascript"></script>
+<!-- Start PHP File Tree -->
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/context-menu.js"></script><!-- IMPORTANT! INCLUDE THE context-menu.js FILE BEFORE drag-drop-folder-tree.js -->
+<script type="text/javascript" src="js/drag-drop-folder-tree-pms.js"></script>
+<!-- End PHP File Tree -->
+</head> 
+
+<body> 
+	<div id="holder">  
+		<div id="header" >
+        	<div id="logo"><img src="images/inkd_logo.png" width="93" height="37" /></div><div id="version">Version 2.0.1</div> <div id="green"><img src="images/green_hosting.png" width="78" height="58" /></div>
+<div id="navcontainer">
+                <ul id="navlist">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="system.html">System</a></li>
+                    <li class="selected"><a href="users.html">Users</a></li>
+                    <li><a href="pages.html">Page Management</a></li>
+                    <li><a href="files.html">File Management</a></li>
+                </ul>
+             </div>
+        </div> 
+		
+        <div id="container"> 
+        	<img src="images/icons/modules/users.png" align="left" class="module" width="35" height="35"/><h1>User Management</h1>
+
+            	<div id="buttons">
+                		<div class="blackbutton"><img src="images/button_icons/user_add.png" />Create User</div>
+                        <div class="blackbutton" id="message_warning"><img src="images/button_icons/user_remove.png" />Delete User</div>
+            			<!--<a href="#" id="button_block"><img src="images/button_add_page.png" width="153" height="28" /></a>
+                        <a href="#" id="button_confirm"><a href="#"><img src="images/button_remove_page.png" width="153" height="28" /></a>
+                        <a href="#"><img src="images/button_edit_page.png" width="153" height="28" /></a>
+                        <a href="#"><img src="images/button_preview.png" width="153" height="28" /></a>
+                        <a href="#"><img src="images/button_publish.png" width="116" height="28" /> </a> -->
+                </div>
+        	<div id="structure">
+            	<div id="leftheading">Site Structure</div>
+
+                                                
+            </div>
+            
+            <div id="content">  
+            	<div id="rightheading">Page Properties</div>
+                	
+               
+                   
+                
+            </div>   
+		</div>
+
+         
+		<div id="footer">
+        	<p>
+        	<a href="#"><img src="images/help_icon.png" align="left" width="42" height="34" /></a>
+            <img src="images/icons/user.png" align="left" width="32" height="32" />
+                Patrick Jones (pjones)<br />
+                Administrator
+            </p>
+            <div id="logout"><div class="blackbutton" onclick="javascript:window.location='http://www.inkadvertising.com.au/ink-d'"><img src="images/button_icons/eject.png" />Logout</div></div>
+        </div> 
+	</div> 
+	 <script type="text/javascript">	
+							treeObj = new JSDragDropTree();
+							treeObj.setTreeId('dhtmlgoodies_tree2');
+							treeObj.setMaximumDepth(7);
+							treeObj.setMessageMaximumDepthReached('Maximum depth reached'); // If you want to show a message when maximum depth is reached, i.e. on drop.
+							treeObj.initTree();
+							treeObj.expandAll();
+						</script>  
+</body> 
+</html>
