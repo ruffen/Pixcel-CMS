@@ -9,14 +9,16 @@ try{
 	$controller = $router->LoadController($dRep);
 	/** check user is logged in and all that **/
 	$fido = new Guarddog();
-
-
-	$INK_User = $fido->checkUser($varChecker->getValue('username'), $varChecker->getValue('password'), $controller);
+	try{
+		$INK_User = $fido->checkUser($varChecker->getValue('username'), $varChecker->getValue('password'), $controller);
+		$hasUser = true;
+		$controller->setUser($INK_User);
+	}catch(NoUserNeededException $e){
+		$hasUser = false;
+	}
 	
-	$useMasterTemplate = (is_int($INK_User->getId())) ? true : false;
-
 	/*** run the controller ***/
-	$router->RunController($useMasterTemplate);
+	$router->RunController($hasUser);
 	
 	//print out the page
 	$router->printHtml();

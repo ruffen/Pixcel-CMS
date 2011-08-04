@@ -44,21 +44,24 @@
 </div>
 
 	<div id="preamble">
+<?php
+if($hasUser){
+?>
 	    <div class="siteSelectList">
 		    <p>Currently Viewing:</p>
 			<select id="topbarSitelist">
 <?php
-foreach($sites as $index => $site){
-	$selected = '';
-	try{
-		$selected = ($site->getId() == $INK_User->getSite()->getId()) ? ' selected="selected"' : '';
-	}catch(DataException $e){
+	foreach($sites as $index => $site){
 		$selected = '';
-	}
+		try{
+			$selected = ($site->getId() == $INK_User->getSite()->getId()) ? ' selected="selected"' : '';
+		}catch(DataException $e){
+			$selected = '';
+		}
 ?>
 				<option value="<?php echo $site->getId();?>"<?php echo $selected;?>><?php echo $site->getName();?></option>
 <?php
-}
+	}
 ?>				
 			</select>
 		</div>
@@ -69,31 +72,32 @@ foreach($sites as $index => $site){
         </div>
 		<div id="global">
 <?php
-foreach($SysModules as $index => $sysMod){
-	$href = (count($sysMod->getKids()) > 0) ? '#' : $sysMod->getIndexRoute();
+	foreach($SysModules as $index => $sysMod){
+		$href = (count($sysMod->getKids()) > 0) ? '#' : $sysMod->getIndexRoute();
 ?>
 		<div class="<?php echo $sysMod->getClass()?>button">
 			<a href="<?php echo $href;?>"><img alt="" src="/static/images/icons/<?php echo $sysMod->getClass();?>.png" style="vertical-align:middle;"><?php echo $sysMod->getName();?></a>
 <?php
-	if(count($sysMod) > 0){
+		if(count($sysMod) > 0){
 ?>
 			<div id="settings-picker">
 				<ul>
 <?php
-		foreach($sysMod->getKids() as $index => $kid){
-			$href = (count($kid->getKids()) > 0) ? '#' : $kid->getIndexRoute();
+			foreach($sysMod->getKids() as $index => $kid){
+				$href = (count($kid->getKids()) > 0) ? '#' : $kid->getIndexRoute();
 ?>
 						<li><a href="<?php echo $href;?>"><img src="/static/images/icons/16/<?php echo $kid->getClass();?>.png" alt="" width="16" height="16" /> <?php echo $kid->getName();?></a></li>
 <?php		
-		}
+			}
 ?>	
 				</ul>
 			</div>
 <?php
-	}
+		}
 ?>		
 		</div>
 <?php
+	}
 }
 ?>
 		</div>
@@ -104,7 +108,7 @@ foreach($SysModules as $index => $sysMod){
         </div>
         <div id="menu">
         	<ul id="navigation">
-<?php echo $modules;?>
+<?php echo ($hasUser) ? $modules : '';?>
             </ul>
         </div>        
     </div>

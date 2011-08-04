@@ -10,10 +10,11 @@ abstract class BaseController
 	protected $INK_User;
 	
 	public function __construct($repository) {
-		global $INK_User;
-		$this->INK_User = $INK_User;
 		$this->dRep = $repository;
 		
+	}
+	public function setUser($user){
+		$this->INK_User = $user;
 	}
 	/**
 	 * This is method getControllerName

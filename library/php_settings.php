@@ -11,6 +11,7 @@ class SharedMemoryException extends ErrorException{}
 class FTPException extends ErrorException{}
 class TemplateException extends PathException{}
 class LockException extends ErrorException{}
+class NoUserNeededException extends ErrorException{}
 class DataException extends ErrorException{
 	private $elements;
 	public function __construct($message = "", $elements = array(), $code = 0, $previous = null){

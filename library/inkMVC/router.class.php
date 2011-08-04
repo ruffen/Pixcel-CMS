@@ -46,12 +46,12 @@ class Router{
 		//run the action method inside controller
 		return $controller->$action();	
 	}
-	public function RunController($useMasterTemplate){
+	public function RunController($hasUser){
 		/* AJAX check  */
-		if((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || !$useMasterTemplate) {
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 			$this->template = $this->runAction();
 		}else{
-			$this->template = $this->getMasterTemplate($this->controller);
+			$this->template = $this->getMasterTemplate($this->controller, $hasUser);
 		}
 	}
 	public function printHtml(){
@@ -86,13 +86,9 @@ class Router{
 		//index is the standard action
 		return 'index';
 	}
-	private function getMasterTemplate($controller){
+	private function getMasterTemplate($controller, $hasUser){
 		global $INK_User;
-		$modules = $INK_User->getModules();
 		$controllerName = $controller->GetName();
-		$sitemodules = from('$module')->in($modules)->where('$module => $module->isSystem() == 0')->select('$module');
-		$systemmodules = from('$module')->in($modules)->where('$module => $module->isSystem() == 1')->select('$module');
-		$moduleList = new ModuleList($sitemodules, $controllerName, array('id' => 'navigation'));
 		$javaScripts = new JS($controllerName);
 		$cssfiles = new CSS($controllerName);
 
@@ -101,14 +97,21 @@ class Router{
 		
 		$masterTemplateName = 'ink02';
 		$masterTemplate = new ViewTemplate();
-		$masterTemplate->SysModules = $systemmodules;
-		$masterTemplate->sites = $INK_User->getRole()->getSites();
+		if($hasUser){
+			$modules = $INK_User->getModules();
+			$sitemodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 0')->select('$module');
+			$systemmodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 1')->select('$module');
+			$moduleList = new ModuleList($sitemodules, $controllerName, array('id' => 'navigation'));		
+			$masterTemplate->SysModules = $systemmodules;
+			$masterTemplate->sites = $INK_User->getRole()->getSites();
+			$masterTemplate->INK_User = $INK_User;
+			$masterTemplate->modules = $moduleList->getList();
+		}
 		$masterTemplate->javascripts = $javaScripts->getScripts();
 		$masterTemplate->cssfiles = $cssfiles->getFiles();
 		$masterTemplate->maincontent = $this->getView();
-		$masterTemplate->INK_User = $INK_User;
+		$masterTemplate->hasUser = $hasUser;
 				
-		$masterTemplate->modules = $moduleList->getList();
 		return $masterTemplate;
 	}
 	private function getView(){
@@ -126,7 +129,7 @@ class Router{
 		//show the view and return the result as a string
 		ob_start();
 		try{
-			$viewTemplate->show($this->getController(), $this->getAction());
+			$viewTemplate->show($this->controller->getName(), $this->resolveAction());
 		}catch(Exception $e){
 			throw $e;
 		}

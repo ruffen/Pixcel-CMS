@@ -33,10 +33,10 @@ class Guarddog{
 		global $dRep;
 		$module = $dRep->getModule($controller->getName());
 		if($module->SystemStatus() == 3){
-			return new User();
+			throw new NoUserNeededException($controller->getName() . 'does not need controller');
 		}
 		if($username !== false){
-			$user = $this->loggin($username, $password);	
+			$user = $this->loggin($username, $password);
 		}elseif(isset($_SESSION['user'])){
 			$user = unserialize($_SESSION['user']);
 		}else{
