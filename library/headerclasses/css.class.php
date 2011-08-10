@@ -14,7 +14,7 @@ class CSS extends FileReader{
 			$files = $this->readFiles($this->folderPath);
 			$cssString = '';
 			foreach($files as $index => $file){
-				if($file == $this->controller.'.css'){
+				if(strtolower($file) == strtolower($this->controller).'.css'){
 					$cssString .= '<link rel="stylesheet" type="text/css" href="/static/css/'.$file.'" />';
 				}
 			}

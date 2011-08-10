@@ -15,7 +15,7 @@ class FileSystemController extends BaseController{
 		}
 	}
 	public function fileuploader(){
-		include_once('view/filesystem/fileuploader.filesystem.php');
+		//include_once('view/filesystem/fileuploader.filesystem.php');
 	}
 	public function uploadelement(){
 		global $varChecker;

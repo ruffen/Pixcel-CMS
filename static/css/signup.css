@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/* ------------------------------------------------------------------- */
+/* ----------- CSS DOCUMENT - WRITTEN BY PATRICK JONES --------------- */
+/* ----- ALL DESIGN AND CSS IS COPYRIGHT INK AUSTRALASIA PTY LTD ----- */
+/* ---- FOR INFORMATION PLEASE CONTACT INFO@INKADVERTISING.COM.AU ---- */
+/* ------------------------------------------------------------------- */
+/* -----------------------UPDATED 08/01/10---------------------------- */
+/* ------------------------------------------------------------------- */
+
+		
+				
+/* Form Styles and Formatting */
+
+.forms form								{ margin: 0; padding:5px 0 10px 0; font-size:12px; }
+.forms form * 							{ margin: 0; }
+
+	.forms form fieldset 				{ border: none; margin: 0 1em 1em; padding:5px; color:#000; margin-top:5px; padding-top:8px; }
+	.forms form legend span 			{ display: block; width: 130px; font-size:80%; padding: 5px 0 5px; color: #FFF; border: 1px solid #000; background:#333; text-transform:uppercase; display:none; }
+	.forms form div 					{ float: left; width: 100%; clear: both; padding: 5px 0; color:#666; }
+	.forms form label					{ display: block; float: left; width: 180px; margin: 0 10px 0 0; padding: 3px 0 0; text-align: left; color:#666; }
+		.forms form ul label			{ font-weight:100; }
+		.forms form label span 			{ color: #dc6900; font-size: 80%; text-transform: uppercase; font-weight:bold; }
+	
+	#statusunp 		{ float: left; width: 274px; margin: 0; padding: 3px; height: 14px; border: 1px solid #fc8686; background:#ffe5e5; color:#fc8686; }
+	#statusp 			{ float: left; width: 274px; margin: 0; padding: 3px; height: 14px; border: 1px solid #86aafc; background: #dfe9ff; color:#86aafc; }
+	
+
+	/*#forms form div.required 			{ background: #fae1cd; }
+	#forms form div.required input#fullname,
+	#forms form div.required input#email,
+	#forms form div.required input#phonenumber 		{ border: 1px solid #dc6900; }*/
+
+	.forms form p 						{ float: left; width: 110px; margin: 0 0 0 10px; padding: 3px 0 0; color: #999; font-size:9px; }
+	.forms form ul 						{ float:left; margin: 0; padding: 5px 0 0 0px; }
+		.forms form ul li 				{ margin: 0; padding: 0 0 5px; list-style-type: none; }
+			.forms form ul li label 	{ display: inline; float: none; width: auto; margin: 0 0 0 5px; padding: 0; text-align: left; }
+			
+			.forms form h2 				{ margin-top:-3px; margin-bottom:20px; }
+			.forms form h2 .icon 		{ margin-right:5px; }
+			
+			
+			.formheading 				{ padding:0px; margin:0; background: url(../images/dash_heading.png) repeat-x; padding-top:-3px; }
+			.forms form table a			{ border-bottom:1px dashed; }
+			
+/* --- End --- */
+
+/* Drag and Drop File Tree */
+
+.file_tree, #file_tree_float 					{ margin:0px; padding:20px; }
+	.file_tree ul 								{ margin-left:20px; padding-left:0px; display:none; }
+		.file_tree li, #file_tree_float li 		{ list-style-type:none; vertical-align:middle; }
+			.file_tree li a, #file_tree_float a { text-decoration:none; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding-left:1px; line-height:1.9; margin-left:2px; list-style-position: 		 												   												  0.5px; border:none; }
+				.file_tree li a:hover 			{ text-decoration:underline; }
+				
+/* --- End --- */
+
+

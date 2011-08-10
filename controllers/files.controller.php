@@ -53,7 +53,7 @@ class FilesController extends BaseController{
 			
 		}
 		
-		echo json_encode($result);		
+		return $result;
 	}
 	private function saveFiles($files, $path){
 		global $varChecker;

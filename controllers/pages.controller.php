@@ -57,9 +57,8 @@ class PagesController extends BaseController{
 		$site = $this->INK_User->getCustomer()->getSite();
 		
 		$menu = new PageList(array('id' => 'sitemap'), array('noDrag' => $noDrag) );
-		$siteName = $site->getName();
-		$sitemap = $menu->getList();
-		include_once('view/pages/sitemap.pages.php');
+		$this->template->siteName = $site->getName();
+		$this->template->sitemap = $menu->getList();
 	}
 	public function savesitemap($pageTree = null, $parent = 0){
 		global $varChecker;
@@ -97,8 +96,8 @@ class PagesController extends BaseController{
 	}
 	public function newpage(){
 		$site = $this->INK_User->getCustomer()->getSite();
-		$templates = $this->dRep->getTemplateCollection(array('site' => $site->getId()));
-		include('view/pages/basicdetails.pages.php');
+		$this->template->site = $site;
+		$this->template->templates = $this->dRep->getTemplateCollection(array('site' => $site->getId()));
 	}
 	public function getPagedetails($save = false){
 		global $varChecker;

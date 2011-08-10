@@ -10,10 +10,10 @@ class UsersController extends BaseController{
 		$this->template->usermenu = ob_get_clean();
 	}
 	public function userprofile(){
-		$user = $this->getUser();
+		$this->template->user = $this->getUser();
 		$customer = $this->INK_User->getCustomer();
-		$groups = $this->dRep->getRoleCollection(array('customer' => $customer->getId()));
-		include_once('view/users/userdetails.users.php');
+		$this->template->customer = $customer;
+		$this->template->groups = $this->dRep->getRoleCollection(array('customer' => $customer->getId()));
 	}
 	public function deleteGroup(){
 		$group = $this->getGroup();

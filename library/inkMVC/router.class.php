@@ -5,6 +5,7 @@ class Router{
 	private $controller;
 	private $action;
 	private $template;
+	private $ajax;
 	
 	public function __construct($route){
 		global $registry;
@@ -13,7 +14,16 @@ class Router{
 		if(empty($route)){
 			$route = $this->findIndex();
 		}
+		
 		$this->route = explode('/', trim($route, '/'));
+		$this->setAjax();
+	}
+	private function setAjax(){
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+			$this->ajax = true;
+		}else{
+			$this->ajax = false;
+		}
 	}
 	private function findIndex(){
 		global $INK_User;
@@ -44,21 +54,27 @@ class Router{
 		$controller = $this->controller;
 		$action = $this->resolveAction();
 		//run the action method inside controller
-		return $controller->$action();	
+		return $controller->$action();
 	}
 	public function RunController($hasUser){
 		/* AJAX check  */
-		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-			$this->template = $this->runAction();
+		if($this->ajax) {
+			if(is_file('view/'.$this->controller->getName().'/'.$this->resolveAction().'.'.$this->controller->getName().'.php')){
+				$this->template = $this->getView();
+			}else{
+				$this->template = $this->runAction();	
+			}
 		}else{
 			$this->template = $this->getMasterTemplate($this->controller, $hasUser);
 		}
 	}
 	public function printHtml(){
-		if(is_object($this->template)){
+		if(is_object($this->template) && !$this->ajax){
 			$this->template->show('masterpage', 'ink02');
+		}else if(is_object($this->template) && $this->ajax){
+			$this->template->show($this->controller->getName(), $this->resolveAction());		
 		}elseif(isset($this->template)){
-			echo trim($this->template);
+			echo trim(json_encode($this->template));
 		}
 	}
 	private function resolveController($repository){
@@ -109,9 +125,17 @@ class Router{
 		}
 		$masterTemplate->javascripts = $javaScripts->getScripts();
 		$masterTemplate->cssfiles = $cssfiles->getFiles();
-		$masterTemplate->maincontent = $this->getView();
 		$masterTemplate->hasUser = $hasUser;
-				
+
+		//show the view and return the result as a string
+		$viewTemplate = $this->getView();
+		ob_start();
+		try{
+			$viewTemplate->show($this->controller->getName(), $this->resolveAction());
+		}catch(Exception $e){
+			throw $e;
+		}
+		$masterTemplate->maincontent = ob_get_clean();
 		return $masterTemplate;
 	}
 	private function getView(){
@@ -125,15 +149,7 @@ class Router{
 				
 		//get template back after action has done what it needs
 		$viewTemplate = $this->controller->getTemplate();
-		
-		//show the view and return the result as a string
-		ob_start();
-		try{
-			$viewTemplate->show($this->controller->getName(), $this->resolveAction());
-		}catch(Exception $e){
-			throw $e;
-		}
-		return ob_get_clean();
+		return $viewTemplate;		
 	}
 }
 ?>

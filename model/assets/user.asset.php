@@ -93,7 +93,7 @@ class User extends Asset{
 				return true;
 			}
 			foreach($userModule->getKids() as $index => $kidUserModule){
-			if($module->getId() == $userModule->getId()){
+				if($module->getId() == $kidUserModule->getId()){
 					return true;
 				}
 			}

@@ -43,9 +43,8 @@ class UserRepository extends MysqlDb{
 		return $user;
 	}
 	public function saveUser($user){
-		if(!isset($_SESSION['customer'])){
-			$customer = $user->getCustomer();
-		}else{
+		$customer = $user->getCustomer();
+		if(!$customer instanceof Customer){
 			$customer = unserialize($_SESSION['customer']);		
 		}
 		$sql = "INSERT INTO ink_user (customerId, username, password, email, firstname, lastname, active) VALUES (?, ?, ?, ?, ?, ?, ?);";
