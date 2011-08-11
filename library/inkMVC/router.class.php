@@ -68,13 +68,15 @@ class Router{
 			$this->template = $this->getMasterTemplate($this->controller, $hasUser);
 		}
 	}
-	public function printHtml(){
+	public function printHtml($hasuser){
 		if(is_object($this->template) && !$this->ajax){
-			$this->template->show('masterpage', 'ink02');
+			$this->template->show('masterpage', ($hasuser) ? 'ink02' : 'ink02nouser');
 		}else if(is_object($this->template) && $this->ajax){
 			$this->template->show($this->controller->getName(), $this->resolveAction());		
-		}elseif(isset($this->template)){
+		}elseif(strpos($_SERVER["HTTP_ACCEPT"], 'json') !== -1){
 			echo trim(json_encode($this->template));
+		}else{
+			echo trim($this->template);
 		}
 	}
 	private function resolveController($repository){
@@ -111,7 +113,6 @@ class Router{
 		//set master statically, we may want to change this to a user controller thing later.
 		//May be usefull for access controll as well.
 		
-		$masterTemplateName = 'ink02';
 		$masterTemplate = new ViewTemplate();
 		if($hasUser){
 			$modules = $INK_User->getModules();

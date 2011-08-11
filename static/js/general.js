@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('input:checkbox:not([safari]).fancy').checkbox();
     $('input[safari]:checkbox.fancy').checkbox({ cls: 'jquery-safari-checkbox' });
     $('input:radio.fancy').checkbox();
@@ -79,6 +80,10 @@ $(document).ready(function () {
         return Class;
     };
 })();
+function ValidateEmail(email) {
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    return (reg.test(email));
+}
 isset = function (variable) {
     if (variable == null || variable == undefined) {
         return false;
@@ -130,7 +135,7 @@ doRequest = function(path, readyFunc, values, type, asynchronous) {
     path = path.replace('?rt=','');
     path = path.replace('/?rt=','');
     
-    $.ajax({
+    var request = $.ajax({
         type: "POST",
         url: '/index.php?rt=' + path,
         data: (values),
@@ -141,6 +146,7 @@ doRequest = function(path, readyFunc, values, type, asynchronous) {
         	alert('Error: ' + textStatus);
         }
     });
+    return request;
 }
 var sleep = false;
 getMessage = function(result, func){

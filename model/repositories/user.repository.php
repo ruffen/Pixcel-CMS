@@ -1,8 +1,13 @@
 <?php
 class UserRepository extends MysqlDb{
 	private $users = array();
-	public function getUser($userId){
+	public function getUser($search){
 		global $dRep, $INK_User;
+		if(is_array($search)){
+			return $this->searchUser($search);	
+		}else{
+			$userId = $search;
+		}
 		if(isset($this->users[$userId])){
 			return $this->users[$userId];	
 		}
@@ -20,6 +25,7 @@ class UserRepository extends MysqlDb{
 		$where = $this->sqlBuilder->createWhere($where, 'A', false);
 		$sql = "SELECT A.* FROM ink_user A
 				WHERE {$where};";
+		print $sql;
 				
 		$row = $this->runSingleQuery($sql);
 		if(!isset($row['userId'])){

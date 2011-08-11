@@ -10,7 +10,11 @@ class SignupController extends BaseController{
 			'timezone' => $varChecker->getValue('Timezone'),
 			'newsletter' => ($varChecker->getValue('Newsletter') == 'on'),
 			'subdomain' => $varChecker->getValue('Subdomain')
-		);		
+		);
+		$unique = $this->CheckUniqueFields('subdomain', $customerProperties);
+		if(!$unique['unique']){
+			throw new DataException('subdomainnotunique');
+		}
 		$customer = new Customer();
 		$customer->setProperties($customerProperties);
 		$customer = $this->dRep->saveCustomer($customer);
@@ -28,7 +32,23 @@ class SignupController extends BaseController{
 		$user->setProperties($userProperties);
 		
 		$this->dRep->saveUser($user);
-		echo json_encode(array('success' => 'signedup'));
+	}
+	public function CheckUniqueFields($fieldname = false, $value = false){
+		global $varChecker;
+		if(!$fieldname || !$value){
+			$value = $varChecker->getValue('value');
+			$fieldname = $varChecker->getValue('fieldname');		
+		}
+		try{
+			if(method_exists('Customer', 'get'.$fieldname)){
+				$customer = $this->dRep->getCustomer(array($fieldname => $value));
+			}else{
+				$user = $this->dRep->getUser(array($fieldname => $value));
+			}		
+			return array('unique' => false);
+		}catch(DataException $e){
+			return array('unique' => true);
+		}
 	}
 }
 ?>

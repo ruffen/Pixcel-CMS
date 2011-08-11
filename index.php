@@ -23,7 +23,7 @@ try{
 	$router->RunController($hasUser);
 	
 	//print out the page
-	$router->printHtml();
+	$router->printHtml($hasUser);
 }catch(AccessException $e){
 	$message['css'] = 'hidden';
 	$message['text'] = '';
