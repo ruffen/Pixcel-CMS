@@ -72,7 +72,14 @@ class Guarddog{
 	private function loggin($username, $password){
 		global $dRep;
 		try{
-			$user = $dRep->getUserCollection(array('username' => $username, 'password' => $password));
+			if(!isset($_SESSION['customer'])){
+				$serverdomains = explode('.', $_SERVER['SERVER_NAME']);
+				$subdomain = array_shift($serverdomains);
+				$customer = $dRep->getCustomer(array('subdomain' => $subdomain));
+			}else{
+				$customer = unserialize($_SESSION['customer']);
+			}
+			$user = $dRep->getUserCollection(array('username' => $username, 'password' => $password, 'customerId' => $customer->getId()));
 			if($user === false){
 				throw new AccessException('nouser');	
 			}
@@ -81,6 +88,9 @@ class Guarddog{
 			}
 			return $user;	
 		}catch(DataException $e){
+			if($e->getMessage() == 'nocustomer'){
+				throw new PathException('notsubdomain');
+			}
 			throw new AccessException('nouser');			
 		}
 	}

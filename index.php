@@ -6,7 +6,13 @@ $error = '';
 include_once('library/init.php');
 try{
 /** load the controller **/
-	$router = new Router(trim($varChecker->getValue('rt'),'/'));
+	try{
+		$route = $varChecker->getValue('rt');
+	}catch(DataException $error){
+		$route = '';
+	}
+	
+	$router = new Router(trim($route,'/'));
 	
 	$controller = $router->LoadController($dRep);
 	/** check user is logged in and all that **/
@@ -52,7 +58,7 @@ try{
 }catch(PDOException $e){
 	print_r($e);
 }catch(DataException $e){
-	if(strpos(trim($e->getMessage()), " ") === false){
+	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 		echo json_encode(array('error' => $e->getMessage(), 'elements' => implode(',', $e->getElements())));
 	}else{
 		echo 'Message: '.$e->getMessage();	
@@ -65,7 +71,7 @@ try{
 		//include some error file	
 	}
 }catch(Exception $e){
-	if(strpos(trim($e->getMessage()), " ") === false){
+	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
 		echo json_encode(array('error' => $e->getMessage()));
 	}else{
 		echo 'Message: '.$e->getMessage();	
