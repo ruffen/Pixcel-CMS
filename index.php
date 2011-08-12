@@ -12,7 +12,14 @@ try{
 	/** check user is logged in and all that **/
 	$fido = new Guarddog();
 	try{
-		$INK_User = $fido->checkUser($varChecker->getValue('username'), $varChecker->getValue('password'), $controller);
+		try{
+			$username = $varChecker->getValue('username');
+			$password = $varChecker->getValue('password');
+		}catch(DataException $error){
+			$username = false;
+			$password = false;			
+		}		
+		$INK_User = $fido->checkUser($username, $password, $controller);
 		$hasUser = true;
 		$controller->setUser($INK_User);
 	}catch(NoUserNeededException $e){

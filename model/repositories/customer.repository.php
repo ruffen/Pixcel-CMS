@@ -8,10 +8,9 @@ class CustomerRepository extends MysqlDb{
 			if(isset($this->customers[$id])){
 				return $this->customers[$id];	
 			}
-			$search = array('customerId', $id);	
+			$search = array('customerId' => $id);	
 		}
 		$where = $this->sqlBuilder->createWhere($search, 'A', false);
-		
 		$sql = "SELECT * FROM ink_customer WHERE {$where};";
 		$row = $this->runSingleQuery($sql);
 		if(!isset($row['customerId'])){

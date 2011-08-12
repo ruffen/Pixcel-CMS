@@ -25,7 +25,6 @@ class UserRepository extends MysqlDb{
 		$where = $this->sqlBuilder->createWhere($where, 'A', false);
 		$sql = "SELECT A.* FROM ink_user A
 				WHERE {$where};";
-		print $sql;
 				
 		$row = $this->runSingleQuery($sql);
 		if(!isset($row['userId'])){

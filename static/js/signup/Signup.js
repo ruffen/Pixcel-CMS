@@ -5,12 +5,14 @@ $(window).load(function () {
         if ($('.errorvalidation.hidden').length != $('.errorvalidation').length || checking) {
             allok = false;
         }
+        MatchPassword();
         if (!$('#Licenseagreement').attr('checked')) {
             $('#Licenseagreement').siblings('.errorvalidation').removeClass('hidden');
             allok = false;
         } else {
             $('#Licenseagreement').siblings('.errorvalidation').addClass('hidden');
         }
+
         if ($('input[value=]').length > 0) {
             $('input[value=]').siblings('.errorvalidation').removeClass('hidden');
             allok = false;
@@ -37,12 +39,23 @@ $(window).load(function () {
     TypewatchOptions.callback = CheckEmail;
     TypewatchOptions.wait = 100;
     $('#Email').typeWatch(TypewatchOptions);
-    TypewatchOptions.callback = HasValue;
+    TypewatchOptions.callback = MatchPassword;
+    $('#PasswordRepeat').bind('keyup', MatchPassword);
+    $('#PasswordRepeat').blur(MatchPassword);
 
-    $('input[type=text]').bind('keyup', HasValue);
-    $('input[type=text]').blur(HasValue);
+    $('input[type=text], input[type=password]').bind('keyup', HasValue);
+    $('input[type=text], input[type=password]').blur(HasValue);
 
 });
+MatchPassword = function () {
+    if ($('#Password').val() != $('#PasswordRepeat').val()) {
+        $('#Password').siblings('.errorvalidation').removeClass('hidden');
+        $('#PasswordRepeat').siblings('.errorvalidation').removeClass('hidden');
+    } else if ($(this).attr('id') != "Email") {
+        $('#Password').siblings('.errorvalidation').addClass('hidden');
+        $('#Password').siblings('.errorvalidation').addClass('hidden');
+    }
+}
 HasValue = function () {
     if ($(this).val().trim() == "") {
         $(this).siblings('.errorvalidation').removeClass('hidden');

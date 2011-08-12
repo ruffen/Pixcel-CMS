@@ -50,12 +50,11 @@ class HttpVars{
 	 *
 	 */
 	public function getValue($variableName){
-		
 		if((isset($this->get[$variableName]) && !empty($this->get[$variableName])) || (isset($this->get[$variableName]) && $this->get[$variableName] == 0)){
 			return $this->get[$variableName];
-		}else if(isset($this->post[$variableName]) && !empty($this->post[$variableName])){
+		}elseif((isset($this->post[$variableName]) && !empty($this->post[$variableName])) || (isset($this->post[$variableName]) && $this->post[$variableName] == "0")){
 			return $this->post[$variableName];
 		}
-		return false;
-	}		
+		throw new DataException("nohttpvar".$variableName);
+	}
 }

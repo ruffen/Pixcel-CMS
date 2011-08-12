@@ -4,33 +4,38 @@ class SignupController extends BaseController{
 	}
 	public function Signup(){
 		global $varChecker;
-		
+		if($varChecker->getValue('Password') != $varChecker->getValue('PasswordRepeat')){
+			throw new DataException('passwordnotmatching');
+		}
+
 		$customerProperties = array(
 			'name' => $varChecker->getValue('Company'),
 			'timezone' => $varChecker->getValue('Timezone'),
 			'newsletter' => ($varChecker->getValue('Newsletter') == 'on'),
 			'subdomain' => $varChecker->getValue('Subdomain')
 		);
-		$unique = $this->CheckUniqueFields('subdomain', $customerProperties);
-		if(!$unique['unique']){
-			throw new DataException('subdomainnotunique');
-		}
-		$customer = new Customer();
-		$customer->setProperties($customerProperties);
-		$customer = $this->dRep->saveCustomer($customer);
-
 		$userProperties = array(
 			'username' => $varChecker->getValue('Username'),
 			'password' => $varChecker->getValue('Password'),
 			'email' => $varChecker->getValue('Email'),
 			'firstname' => $varChecker->getValue('Firstname'),
 			'lastname' => $varChecker->getValue('Lastname'),
-			'customer' => $customer,
 			'active' => true
 		);
-		$user = new User();
-		$user->setProperties($userProperties);
+		$unique = $this->CheckUniqueFields('subdomain', $customerProperties['subdomain']);
+		if(!$unique['unique']){
+			throw new DataException('subdomainnotunique');
+		}
+		$this->checkproperties($customerProperties);
+		$this->checkproperties($userProperties);
 		
+		$customer = new Customer();
+		$customer->setProperties($customerProperties);
+		$customer = $this->dRep->saveCustomer($customer);
+		
+		$user = new User();
+		$userProperties['customer'] = $customer;
+		$user->setProperties($userProperties);
 		$this->dRep->saveUser($user);
 	}
 	public function CheckUniqueFields($fieldname = false, $value = false){
@@ -48,6 +53,12 @@ class SignupController extends BaseController{
 			return array('unique' => false);
 		}catch(DataException $e){
 			return array('unique' => true);
+		}
+	}
+	private function checkproperties($properties){
+		$emptyprops = from('$property')->in($properties)->where('$property == ""')->select('$property');
+		if(count($emptyprops) > 0){
+			throw new DataException('mandatoryfields');
 		}
 	}
 }
