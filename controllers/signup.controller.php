@@ -37,6 +37,20 @@ class SignupController extends BaseController{
 		$userProperties['customer'] = $customer;
 		$user->setProperties($userProperties);
 		$this->dRep->saveUser($user);
+		
+		$group = new Role();
+		$users = array($user);
+		$modules = $this->dRep->getModuleCollection(array('userId' => $user->getId()));
+		
+		$group = new Role();
+		$properties = array(
+			'name' => 'Administrators',
+			'description' => 'Full Access Administrator role',
+			'customer' => $customer->getId(),
+			'users' => array($user)
+		);
+		$group->setProperties($properties);
+		$this->dRep->saveRole($group);
 	}
 	public function CheckUniqueFields($fieldname = false, $value = false){
 		global $varChecker;

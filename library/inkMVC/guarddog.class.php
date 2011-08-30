@@ -1,6 +1,7 @@
 <?php
 class Guarddog{
 	private $user;
+	private $customer;
 	public function __construct(){
 		$this->time = time();
 		$this->startSession();
@@ -20,40 +21,45 @@ class Guarddog{
 			session_start();
 		}
 	}
-	
+	public function CheckCustomer(){
+		global $dRep;
+		if(!isset($_SESSION['customer'])){
+			$serverdomains = explode('.', $_SERVER['SERVER_NAME']);
+			$subdomain = array_shift($serverdomains);
+			$this->customer = $dRep->getCustomer(array('subdomain' => $subdomain));
+			$_SESSION['customer'] = serialize($this->customer);			
+		}
+		$this->customer = unserialize($_SESSION['customer']);
+		return $this->customer;
+	}
 	/**
-	 * Chekuser tries to find a user matching username and password
+	 * CheckUser sees if we have a user in session, if not tries to login a user
 	 *
 	 * @param string $username Username entered
 	 * @param string $password password entered
 	 * @return object User object of matched users, will throw exception if no user is found or if two users are found 
 	 *
 	 */
-	public function CheckUser($username, $password, $controller){
+	public function CheckUser(){
 		global $dRep;
-		$module = $dRep->getModule($controller->getName());
-		if($module->SystemStatus() == 3){
-			throw new NoUserNeededException($controller->getName() . 'does not need controller');
-		}
-		if($username !== false){
-			$user = $this->loggin($username, $password);
-		}elseif(isset($_SESSION['user'])){
-			$user = unserialize($_SESSION['user']);
+		if(!isset($_SESSION['user'])){
+			$this->user = $this->logginUser();
+			$_SESSION['user'] = serialize($this->user);
 		}else{
-			throw new AccessException('expired');	
+			$this->user = unserialize($_SESSION['user']);
 		}
-		
-		$site = $user->getRole()->getSite();
-		if(!$user->HasControllerAccess($module, $site)){
-			throw new AccessException('noaccess');
+		return $this->user;
+	}
+	public function ResolveUserSite(){
+		if(isset($_SESSION['site'])){
+			return $site;	
 		}
-		
-		//set session vars
-		$_SESSION['user'] = serialize($user);
-		$_SESSION['customer'] = serialize($user->getCustomer());
+		$site = $this->user->getSite();
 		$_SESSION['site'] = serialize($site);
-
-		return $user;
+		return $site;
+	}
+	public function CheckUserAccess(Module$module){
+		return ($this->user->HasControllerAccess($module));
 	}
 	public function updateSite($site){
 		$user = unserialize($_SESSION['user']);
@@ -64,35 +70,29 @@ class Guarddog{
 
 		$_SESSION['user'] = serialize($user);
 		$_SESSION['customer'] = serialize($user->getCustomer());
-		$_SESSION['site'] =serialize($site);
+		$_SESSION['site'] = serialize($site);
 	}
 	public function updateUser($user){
 		$_SESSION['user'] = serialize($user);		
 	}
-	private function loggin($username, $password){
-		global $dRep;
+	private function logginUser(){
+		global $dRep, $varChecker;
 		try{
-			if(!isset($_SESSION['customer'])){
-				$serverdomains = explode('.', $_SERVER['SERVER_NAME']);
-				$subdomain = array_shift($serverdomains);
-				$customer = $dRep->getCustomer(array('subdomain' => $subdomain));
-			}else{
-				$customer = unserialize($_SESSION['customer']);
-			}
-			$user = $dRep->getUserCollection(array('username' => $username, 'password' => $password, 'customerId' => $customer->getId()));
-			if($user === false){
-				throw new AccessException('nouser');	
-			}
-			if(!$user->active()){
-				throw new AccessException('inactiveuser');
-			}
-			return $user;	
+			$username = $varChecker->getValue('username');
+			$password = $varChecker->getValue('password');
 		}catch(DataException $e){
-			if($e->getMessage() == 'nocustomer'){
-				throw new PathException('notsubdomain');
-			}
-			throw new AccessException('nouser');			
+			throw new AccessException('needusername');
 		}
+		try{
+			$searchParams = array('username' => $username, 'password' => $password, 'customerId' => $this->customer->getId());
+			$user = $dRep->getUserCollection($searchParams);
+		}catch(DataException $e){
+			throw new AccessException('nouser');	
+		}
+		if(!$user->active()){
+			throw new AccessException('inactiveuser');
+		}
+		return $user;	
 	}
 }
 ?>

@@ -11,7 +11,6 @@ abstract class BaseController
 	
 	public function __construct($repository) {
 		$this->dRep = $repository;
-		
 	}
 	public function setUser($user){
 		$this->INK_User = $user;

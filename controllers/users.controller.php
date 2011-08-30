@@ -121,7 +121,11 @@ class UsersController extends BaseController{
 	}
 	public function UsersMenu(){
 		global $varChecker;
-		$drag = ($varChecker->getValue('drag') !== false && $varChecker->getValue('drag') != '') ? true : false;
+		try{
+			$drag = ($varChecker->getValue('drag') !== false && $varChecker->getValue('drag') != '') ? true : false;
+		}catch(DataException $e){
+			$drag = false;
+		}
 		
 		$customer = $this->INK_User->getSite();
 		$groups = $this->dRep->getRoleCollection(array('customer' => $customer->getId()));
@@ -169,13 +173,16 @@ class UsersController extends BaseController{
 	}
 	private function getGroup(){
 		global $varChecker;
-		if($varChecker->getValue('id') != ''){
+		try{
 			if($varChecker->getValue('id') == 'new'){
 				$group = new Role();
 				$group->setProperties(array('id' => 'new'));
 				return $group;
 			}
 			return $this->dRep->getRole($varChecker->getValue('id'));
+		}catch(DataException $e){
+			global $logger;
+			$logger->Error("no variable id", $e);
 		}
 		$customer = $this->INK_User->getCustomer();
 		$groups = $this->dRep->getRoleCollection(array('customer' => $customer->getId()));
@@ -186,7 +193,7 @@ class UsersController extends BaseController{
 	}
 	private function getUser(){
 		global $varChecker;
-		if($varChecker->getValue('id') != ''){
+		try{
 			if($varChecker->getValue('id') == 'new'){
 				$user = new User();
 				$user->setProperties(array('id' => 'new'));
@@ -194,8 +201,9 @@ class UsersController extends BaseController{
 			}
 			$user = $this->dRep->getUser($varChecker->getValue('id'));
 			return $user;
+		}catch(DataException $e){
+			return $this->INK_User;	
 		}
-		return $this->INK_User;
 	}
 }
 ?>

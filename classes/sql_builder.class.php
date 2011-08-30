@@ -62,7 +62,7 @@ class SQL_builder{
 	private function translateWhere(array$where, $table = ''){
 		//may want to use the xml files here, but for now use manual translation
 		$newWhere = array();
-		$noId = array('published', 'resourcefolder');
+		$noId = array('published', 'resourcefolder', 'cmsIndex');
 		$count = 0;
 		foreach($where as $key => $value){
 			if(is_array($table) && isset($table[0])){

@@ -43,6 +43,23 @@ class HttpVars{
 	}
 	
 	/**
+	/**
+	 * This is method getValues
+	 *
+	 * @return array associative array containing all post and get keys and values
+	 *
+	 */
+	public function getSentVariables($removeRouteInformation = true){
+		$vars = array_merge($this->post, $this->get); 
+		if($removeRouteInformation){
+			if(isset($vars['rt'])){
+				unset($vars['rt']);
+			}	
+		}
+		return $vars;
+	}
+	
+	/**
 	 * getValue returns a specified get or post variable if it excists
 	 *
 	 * @param string $variableName Name of variable to get

@@ -32,8 +32,14 @@ class Module extends Asset{
 	public function getPriority(){
 		return $this->prio;	
 	}
+	public function AllowAnonomousAccess(){
+		return ($this->system == '3');
+	}
 	public function isIndex(){
 		return ($this->index == '1') ? true : false;	
+	}
+	public function FirstLoginIndex(){
+		return ($this->index == '2') ? true : false;		
 	}
 	public function getRoute(){
 		return $this->route;

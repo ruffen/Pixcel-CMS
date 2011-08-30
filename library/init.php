@@ -2,6 +2,9 @@
 /*** include implementation of several php magic functions, such as __autoload and errorhandler ***/
 require_once('library/php_settings.php');
 
+/*** include logger class ***/
+require_once('library/inkMVC/INKLogger.php');
+
 /*** include PHPLinq - Linq for php ***/
 require_once('classes/PHPLinq.php');
 require_once('classes/PHPLinq/LinqToObjects.php');
@@ -32,6 +35,9 @@ require_once('spots/adminspot.abstract.php');
 /*** include header classes **/
 require_once('library/headerclasses/js.class.php');
 require_once('library/headerclasses/css.class.php');
+
+/** create logger instance **/
+$logger = new INKLogger();
 
 /** create a new repository **/
 $dRep = new Repository();

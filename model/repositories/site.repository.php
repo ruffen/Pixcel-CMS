@@ -5,12 +5,14 @@ class SiteRepository extends MysqlDb{
 		global $dRep;
 		$sql = "SELECT * FROM ink_customer_sites WHERE siteId = ?;";
 		$row = $this->runSingleQuery($sql, array($id));
+		if(!isset($row['siteId'])){
+			throw new DataException('nosite');
+		}
 		$properties = array(
 				'id' => $row['siteId'],
 				'name' => $row['sitename'],
 				'url' => $row['siteurl'],
 				'templates' => $dRep->getTemplateCollection(array('site' => $row['siteId'])),
-				'modules' => $dRep->getModuleCollection(array('site' => $row['siteId'])),
 				'ftp_url' => $row['ftp_url'],
 				'ftp_username' => $row['ftp_username'],
 				'ftp_password' => $row['ftp_password'],
@@ -49,7 +51,6 @@ class SiteRepository extends MysqlDb{
 					'name' => $row['sitename'],
 					'url' => $row['siteurl'],
 					'templates' => $dRep->getTemplateCollection(array('site' => $row['siteId'])),
-					'modules' => $dRep->getModuleCollection(array('site' => $row['siteId'])),
 					'ftp_url' => $row['ftp_url'],
 					'ftp_username' => $row['ftp_username'],
 					'ftp_password' => $row['ftp_password'],
@@ -66,31 +67,22 @@ class SiteRepository extends MysqlDb{
 	}
 	public function saveSite($site){
 		global $INK_User;
-		$ftpDetails = $site->getFtpdetails();
 		$sql = "INSERT INTO ink_customer_sites (customerId, sitename, siteurl, ftp_url,	ftp_root, ftp_username, ftp_password, ftp_passv, ftp_mode, ftp_port) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		$values = array(
 			$INK_User->getCustomer()->getId(),
 			$site->getName(),
 			$site->getUrl(),
-			$ftpDetails['url'], 
-			$ftpDetails['path'], 
-			$ftpDetails['username'], 
-			$ftpDetails['password'], 
-			$ftpDetails['passv'], 
-			$ftpDetails['protocol'], 
-			$ftpDetails['port'],
+			$site->getFTPUrl(), 
+			$site->getRoot(), 
+			$site->getFTPUsername(), 
+			$site->getFTPPassword(), 
+			$site->UsesPassive(), 
+			$site->getMode(), 
+			$site->getPort()
 		);
 		$id = $this->insertValues($sql, $values);
 		$site->setProperties(array('id' => $id));
-		$this->saveSiteModules($site);
-		$this->addSiteUser($INK_User, $site);
 		return $id;
-	}
-	public function addSiteUser($user, $site){
-		global $INK_User;
-		$sql = "INSERT INTO ink_site_user (userId, siteId) VALUES (?,?);";
-		$values = array($user->getId(), $site->getId());
-		$this->insertValues($sql, $values);
 	}
 	public function updateSite($site){
 		global $INK_User;
@@ -111,7 +103,6 @@ class SiteRepository extends MysqlDb{
 		);
 		try{
 			$this->updateRow($sql, $values);
-			$this->saveSiteModules($site);
 		}catch(PDOException $e){
 			return false;
 		}
@@ -121,26 +112,6 @@ class SiteRepository extends MysqlDb{
 		$sql = "UPDATE ink_customer_sites SET softdelete = ? WHERE siteId = ?;";
 		$values = array(true, $site->getId());
 		$this->updateRow($sql, $values);
-	}
-	private function deleteSiteModules($site){
-		$sql = "DELETE FROM ink_site_modules WHERE siteId = ?;";
-		$this->deleteValues($sql, array($site->getId()));	
-	}
-	private function saveSiteModules($site){
-		$customer = unserialize($_SESSION['customer']);
-		$this->deleteSiteModules($site);
-		$modules = $site->getModules();
-		foreach($modules as $index => $module){
-			$sql = "INSERT INTO ink_site_modules (customerId, siteId, moduleId) VALUES (?, ?, ?);";
-			$values = array($customer->getId(), $site->getId(), $module->getId());
-			$this->insertValues($sql, $values); 
-			$kids = $module->getKids();
-			foreach($kids as $childModule){
-				$sql = "INSERT INTO ink_site_modules (customerId, siteId, moduleId) VALUES (?, ?, ?);";
-				$values = array($customer->getId(), $site->getId(), $childModule->getId());
-				$this->insertValues($sql, $values); 			
-			}
-		}
 	}
 }
 

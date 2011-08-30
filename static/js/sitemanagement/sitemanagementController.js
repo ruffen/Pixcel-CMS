@@ -1,4 +1,16 @@
 ﻿$(document).ready(function() {
+    
+    $('#createNewSite').bind('click', function(){
+        $(this).animate({
+            opacity : 0
+        }, 1500);
+        $(this).parent('.separator').animate({
+            height: 40
+          }, 2000);
+        return false;
+    });
+
+
     $('#topbarSitelist').addClass('hidden');
 	$('#test_connection').bind('click', testconnection);
     $('#browseftp').bind('click', function(){
@@ -22,8 +34,8 @@
     $('#save').bind('click', function(){
         var button = replaceButtonwithloading($(this));
     	var data = getFtpdetails();
-    	data.sitename = $('#sitename').attr('value');
-    	data.weburl = $('#siteurl').attr('value');
+    	data.name = $('#sitename').attr('value');
+    	data.url = $('#siteurl').attr('value');
     	data.id = $('#siteId').attr('value');
 		doRequest($(this).attr('href'), function(result){
             getMessage(result);
@@ -73,7 +85,7 @@ getSiteevents = function(){
 getSite = function(siteId, cancelbutton){
     $('.forms').addClass('hidden');
     $('.loadingmain').removeClass('hidden');
-    doRequest('sitemanagement/getsitedetails', function(site){
+    doRequest('sitemanagement/sitedetails', function(site){
         if(!isset(site.success)){
             getMessage(site);
             return false;
@@ -106,6 +118,7 @@ testconnection = function(){
     
 	$('#sitemanagement_form input').removeClass('error');
     var data = getFtpdetails();
+    data.id = $('#siteId').attr('value');
 	doRequest($(this).attr('href'), 
 		function(result){
 			if(isset(result.error) && result.error.search('missing') != -1){
@@ -119,7 +132,7 @@ testconnection = function(){
 }
 getSitelist = function(){
     loadinggif($('#site_tree'));
-	doRequest('sitemanagement/sitelist', function(sites){ 
+	doRequest('sitemanagement/SiteList', function(sites){ 
         $('#site_tree').empty();
         for(var data in sites){
 			createNewSiteListelement(sites[data]);
@@ -163,12 +176,13 @@ ftpbrowser = function(){
 }
 getFtpdetails = function(){
 	var data = {
-		'url' : $('#ftp_url').attr('value'),
-		'ftpuser' : $('#username').attr('value'),
-		'ftppass' : $('#password').attr('value'),
-		'port' : $('#port').attr('value'),
-		'protocol' : $('#protocol').attr('value'),
-		'root' : $('#root').attr('value'),
+		'ftp_url' : $('#ftp_url').attr('value'),
+		'ftp_root' : $('#root').attr('value'),
+		'ftp_username' : $('#username').attr('value'),
+		'ftp_password' : $('#password').attr('value'),
+		'ftp_mode' : $('#protocol').attr('value'),
+		'ftp_passive': $('#protocol').attr('value'),
+		'ftp_port': $('#port').attr('value')
 	}
 	data.passive = ($('#pasv').attr('checked')) ? 'on' : 'off';
 	return data;	

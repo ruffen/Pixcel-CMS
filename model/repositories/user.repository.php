@@ -39,6 +39,7 @@ class UserRepository extends MysqlDb{
 			'lastname' => $row['lastname'],
 			'customer' => $dRep->getCustomer($row['customerId']),
 			'roles' => $dRep->getRoleCollection(array('userId' => $row['userId'])),
+			'sites' => $dRep->getSiteCollection(array('userId' => $row['userId'])),
 			'modules' => $dRep->getModuleCollection(array('userId' => $row['userId'], 'parent' => 0)),
 		);
 		$user = new User();

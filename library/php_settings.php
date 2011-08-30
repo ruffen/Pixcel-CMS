@@ -1,6 +1,7 @@
 <?php
 class IOException extends ErrorException {}
 class AccessException extends ErrorException{}
+class CustomerException extends AccessException{}
 class PathException extends ErrorException{}
 class ControllerException extends ErrorException{}
 class PropertyException extends ErrorException{}
@@ -12,6 +13,8 @@ class FTPException extends ErrorException{}
 class TemplateException extends PathException{}
 class LockException extends ErrorException{}
 class NoUserNeededException extends ErrorException{}
+class SiteException extends ErrorException{}
+class NotImplementedException extends ErrorException{}
 class DataException extends ErrorException{
 	private $elements;
 	public function __construct($message = "", $elements = array(), $code = 0, $previous = null){

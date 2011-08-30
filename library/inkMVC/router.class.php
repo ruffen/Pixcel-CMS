@@ -9,14 +9,17 @@ class Router{
 	
 	public function __construct($route){
 		global $registry;
-		
 		$this->registry = $registry;
-		if(empty($route)){
-			$route = $this->findIndex();
-		}
-		
-		$this->route = explode('/', trim($route, '/'));
+		$route = trim(trim($route, '/'));
+		$this->route = explode('/', $route);
 		$this->setAjax();
+	}
+	public function getControllername(){
+		if(count($this->route) > 0){
+			return $this->route[0];
+		}else{
+			return '';
+		}
 	}
 	private function setAjax(){
 		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
@@ -24,20 +27,6 @@ class Router{
 		}else{
 			$this->ajax = false;
 		}
-	}
-	private function findIndex(){
-		global $INK_User;
-		if(!is_object($INK_User)){
-			return '';	
-		}
-		$modules = $INK_User->getModules();
-		//need to get the site
-		foreach($modules as $index => $module){
-			if($module->isIndex()){
-				return str_replace('/?rt=', '', $module->getIndexRoute());
-			}	
-		}
-		throw new RouteException('Could not find a route');
 	}
 	public function LoadController($repository){
 		$controllerName = $this->resolveController($repository).'Controller';
@@ -85,7 +74,6 @@ class Router{
 			$module = $repository->getModule('index');
 			$controller = $module->getRoute();
 		}
-		
 		if($controller == 'logout'){
 			throw new AccessException('logout');
 		}
@@ -112,13 +100,12 @@ class Router{
 
 		//set master statically, we may want to change this to a user controller thing later.
 		//May be usefull for access controll as well.
-		
 		$masterTemplate = new ViewTemplate();
 		if($hasUser){
 			$modules = $INK_User->getModules();
-			$sitemodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 0')->select('$module');
+			$customermodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 0')->select('$module');
 			$systemmodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 1')->select('$module');
-			$moduleList = new ModuleList($sitemodules, $controllerName, array('id' => 'navigation'));		
+			$moduleList = new ModuleList($customermodules, $controllerName, array('id' => 'navigation'));		
 			$masterTemplate->SysModules = $systemmodules;
 			$masterTemplate->sites = $INK_User->getRole()->getSites();
 			$masterTemplate->INK_User = $INK_User;

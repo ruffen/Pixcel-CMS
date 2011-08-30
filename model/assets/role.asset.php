@@ -75,5 +75,8 @@ class Role extends Asset{
 	public function getRights(){
 		return $this->rights;
 	}
+	public function getCustomer(){
+		return $this->customer;
+	}
 }
 ?>

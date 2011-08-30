@@ -29,9 +29,9 @@ class RoleRepository extends MysqlDb{
 		return $role;
 	}
 	public function saveRole($role){
-		$customer = unserialize($_SESSION['customer']);
+		$customerId = $role->getCustomer();
 		$sql = "INSERT INTO ink_roles (customerId, roleName, description) VALUES (?, ?, ?);";
-		$values = array($customer->getId(), $role->getName(), $role->getDescription());
+		$values = array($customerId, $role->getName(), $role->getDescription());
 		$id = $this->insertValues($sql, $values);
 		$role->setProperties(array('id' => $id));
 		$this->saveModuleAccess($role);

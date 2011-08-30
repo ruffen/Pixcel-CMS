@@ -42,9 +42,10 @@ foreach($sites as $menuSite){
                 </div>
                 <div class="dashcontent">
                 	<h3><img src="/static/images/icons/48/home.png" alt="" class="site" /><span id="heading_sitename"><?php echo $site->getName();?></span>&nbsp;</h3>
-                    <div class="separator"></div>
-                    
-                    
+					<div class="separator" <?php echo ($site->getId() == 'new') ? 'style=" background-color: white; background-position: bottom; height: 338px; position: absolute; width: 65%;"' : '';?>>
+						<a href="#" id="createNewSite">Create new site</a>
+					</div>
+                    <div style="<?php echo ($site->getId() == 'new') ? 'height: 40px' : 'display:none;';?>"></div>                    
                     <div class="forms">	
 						<form action="#" method="get" id="sitemanagement_form">
 							<fieldset>
@@ -63,25 +64,25 @@ foreach($sites as $menuSite){
 								<div>
 									<label for="protocol">Server:</label>
 									<select name="protocol" id="protocol" style="width:75px;">
-										<option value="ftp" <?php echo ($ftpdetails['protocol'] == 'ftp') ? 'selected="selected"': '';?>>FTP</option>
-										<!--<option value="sftp" <?php echo ($ftpdetails['protocol'] == 'sftp') ? 'selected="selected"': '';?>>SFTP</option>-->
+										<option value="ftp" <?php echo (strpos($site->getProtocol(), 'sftp') === -1) ? 'selected="selected"': '';?>>FTP</option>
+										<!--<option value="sftp" <?php echo (strpos($site->getProtocol(), 'sftp') !== -1) ? 'selected="selected"': '';?>>SFTP</option>-->
 									</select>
-									<input name="ftp_url" id="ftp_url" type="text" style="width:199px;" value="<?php echo $ftpdetails['url'];?>" />
-									<input type="checkbox" name="pasv" id="pasv" <?php echo ($ftpdetails['passv']) ? 'checked="checked"' :'';?> /> PASV
+									<input name="ftp_url" id="ftp_url" type="text" style="width:199px;" value="<?php echo $site->getFTPUrl();?>" />
+									<input type="checkbox" name="pasv" id="pasv" <?php echo ($site->UsesPassive()) ? 'checked="checked"' :'';?> /> PASV
 								</div>
 								<div>
 									<label for="port">Port:</label>
-									<input name="port" id="port" type="text" value="<?php echo $ftpdetails['port'];?>" />
+									<input name="port" id="port" type="text" value="<?php echo $site->getPort();?>" />
 	    
 								</div>
 								<div>
 									<label for="username">Username:</label>
-									<input name="username" id="username" type="text" value="<?php echo $ftpdetails['username'];?>" />
+									<input name="username" id="username" type="text" value="<?php echo $site->getFTPUsername()?>" />
 	    
 								</div>
 								<div>
 									<label for="password">Password:</label>
-									<input name="password" id="password" type="password" value="<?php echo $ftpdetails['password'];?>" />&nbsp;<a id="test_connection" href="/sitemanagement/testftpconn" class="smlbutton">Test</a>
+									<input name="password" id="password" type="password" value="<?php echo $site->getFTPPassword();?>" />&nbsp;<a id="test_connection" href="/sitemanagement/TestFTPConnection" class="smlbutton">Test</a>
 								</div>
 								<div>
 	                        		<label for="root">Website Root:</label>    

@@ -3,7 +3,6 @@ class Site extends Asset{
 	protected $id;
 	protected $name;
 	protected $url;
-	protected $modules;
 	protected $templates;
 	protected $ftp_url;
 	protected $ftp_username;
@@ -19,40 +18,52 @@ class Site extends Asset{
 	public function getTemplates(){
 		return $this->templates;	
 	}
-	public function setFtpDetails($details){
-		$this->ftp_url = $details['url'];
-		$this->ftp_root = $details['path'];
-		$this->ftp_username = $details['username'];
-		$this->ftp_password = $details['password'];
-		$this->ftp_mode = $details['protocol'];
-		$this->ftp_passive = $details['passv'];
-		$this->ftp_port = $details['port'];
-	}
 	public function getFtpDetails(){
 		return array(
-					'url' => $this->ftp_url, 
-					'path' => $this->ftp_root, 
-					'username' => $this->ftp_username, 
-					'password' => $this->ftp_password, 
-					'protocol' => $this->ftp_mode, 
-					'passv' => $this->ftp_passive,
-					'port' => $this->ftp_port
-				);
+			'url' => $this->ftp_url, 
+			'root' => $this->ftp_root, 
+			'ftpuser' => $this->ftp_username, 
+			'ftppass' => $this->ftp_password, 
+			'protocol' => $this->ftp_mode, 
+			'passv' => $this->ftp_passive,
+			'port' => $this->getPort()
+			);
+	}
+	public function getFTPUsername(){
+		return $this->ftp_username;
+	}
+	public function getFTPPassword(){
+		return $this->ftp_password;
+	}
+	public function getFTPUrl(){
+		return $this->ftp_url;
 	}
 	public function getUrl(){
 		return $this->url;
 	}
-	public function getPassivemode(){
+	public function UsesPassive(){
 		return $this->ftp_passive;
 	}
 	public function getPort(){
-		return $this->ftp_port;
+		if(empty($this->ftp_port)){
+			if($this->ftp_mode == 'ftp' || empty($this->ftp_mode)){
+				return 21;
+			}else{
+				return 22;
+			}
+		}else{
+			return $this->ftp_port;
+		}
+		
 	}
 	public function getPath($path){
 		switch($path){
-			case 'root': return $this->ftp_root;break;
+			case 'root': return (empty($this->ftp_root)) ? '/' : $this->ftp_root;break;
 			default : throw new PathException('nopath');break;
 		}
+	}
+	public function getMode(){
+		return $this->ftp_mode;
 	}
 	public function getRoot(){
 		return $this->ftp_root;
@@ -61,16 +72,8 @@ class Site extends Asset{
 		switch($this->ftp_mode){
 			case 'ftp': return 'ftp://';break;
 			case 'sftp': return 'sftp://';break;
-			default : throw new SiteException('noftpmode');break;
+			default : return 'ftp://';break;
 		}
-	}
-	public function getModules(){
-		if(isset($this->modules[$this->id])){
-			return $this->modules[$this->id];
-		}else if(isset($this->modules['new'])){
-			return $this->modules['new'];
-		}
-		throw new DataException('nomodules');
 	}
 	public function hasTemplate($searchTemplate){
 		foreach($this->templates as $template){

@@ -15,16 +15,8 @@ class User extends Asset{
 	public function getUsername(){
 		return $this->username;	
 	}
-	public function getModules($site = false){
-		global $dRep;
-		if($site !== false){
-			return $this->modules;
-		}elseif(isset($_SESSION['site'])){
-			$site = unserialize($_SESSION['site']);
-			if(isset($this->modules[$site->getId()])){
-				return  $this->modules[$site->getId()];
-			}
-		}
+	public function getModules(){
+		return $this->modules;
 		throw new ModuleException('No modules found for userid: '.$this->id);
 	}
 	public function getCustomer(){
@@ -80,14 +72,16 @@ class User extends Asset{
 		if(isset($_SESSION) && isset($_SESSION['site'])){
 			$site = unserialize($_SESSION['site']);
 			return $site;
+		}else if(count($this->sites) > 0){
+			return $this->sites[0];
 		}
-		throw new DataException('nosites');
+		throw new SiteException('nosites');
 	}
-	public function HasControllerAccess($module, $site){
-		if(!isset($this->modules[$site->getId()])){
-			return false;
-		}
-		$modules = $this->modules[$site->getId()];
+	public function getSites(){
+		return $this->sites;
+	}
+	public function HasControllerAccess($module){
+		$modules = $this->modules;
 		foreach($modules as $index => $userModule){
 			if($module->getId() == $userModule->getId()){
 				return true;

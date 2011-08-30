@@ -4,37 +4,59 @@ ini_set('error_reporting', E_ALL);
 $error = '';
 /*** include the init.php file ***/
 include_once('library/init.php');
+$route = '';
+$hasUser = true;
 try{
-/** load the controller **/
 	try{
 		$route = $varChecker->getValue('rt');
-	}catch(DataException $error){
-		$route = '';
+		$router = new Router(trim($route,'/'));
+	}catch(DataException $e){
+		$module = $dRep->getModule('index');
 	}
+	/*** find the module we are looking for ***/
 	
-	$router = new Router(trim($route,'/'));
-	
-	$controller = $router->LoadController($dRep);
-	/** check user is logged in and all that **/
+	/*** check if this is a customer **/
+	/*** redirect to login if we dont have customer and are not trying to access a module where anon access is allowed **/
 	$fido = new Guarddog();
 	try{
+		$customer = $fido->CheckCustomer();
+	}catch(DataException $e){
+		if($router->getControllername() != ''){
+			$module = $dRep->getModule($router->getControllername());
+			if(!$module->AllowAnonomousAccess()){
+				throw new CustomerException('wrongcustomer');
+			}
+			$hasUser = false;
+		}else{
+			throw new CustomerException('nocustomer');
+		}
+	}
+	/*** check if we have a user **/
+	if(!isset($module) || (isset($module) && !$module->AllowAnonomousAccess())){
+		$INK_User = $fido->CheckUser();
 		try{
-			$username = $varChecker->getValue('username');
-			$password = $varChecker->getValue('password');
-		}catch(DataException $error){
-			$username = false;
-			$password = false;			
-		}		
-		$INK_User = $fido->checkUser($username, $password, $controller);
-		$hasUser = true;
+			$fido->ResolveUserSite();
+		}
+		catch(SiteException $e)
+		{
+			//need to find module with no site
+			$module = $dRep->getModule(array('cmsIndex' => 2));
+		}
+		//we have user, check if we have a site, if not, redirect
+	}
+	if(isset($module)){
+		if(!isset($router) || strpos($router->getControllername(), $module->getRoute()) === -1){
+			//make sure we can access actions on the allowed module by not defaulting to index
+			$router = new Router($module->getRoute());
+		}	
+	}
+	$controller = $router->LoadController($dRep);
+	if($hasUser){
 		$controller->setUser($INK_User);
-	}catch(NoUserNeededException $e){
-		$hasUser = false;
 	}
 	
 	/*** run the controller ***/
 	$router->RunController($hasUser);
-	
 	//print out the page
 	$router->printHtml($hasUser);
 }catch(AccessException $e){
@@ -68,6 +90,8 @@ try{
 		echo 'Error happened in file: '.$e->getFile();
 		echo '<br/>';
 		echo 'Line number: '.$e->getLine();
+		echo '<br/>';
+		echo 'Trace number: '.$e->getTraceAsString();
 		//include some error file	
 	}
 }catch(Exception $e){
@@ -81,6 +105,8 @@ try{
 		echo 'Error happened in file: '.$e->getFile();
 		echo '<br/>';
 		echo 'Line number: '.$e->getLine();
+		echo '<br/>';
+		echo 'Trace number: '.$e->getTraceAsString();
 		//include some error file	
 	}
 }
