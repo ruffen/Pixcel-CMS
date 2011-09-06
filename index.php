@@ -45,11 +45,12 @@ try{
 		//we have user, check if we have a site, if not, redirect
 	}
 	if(isset($module)){
-		if(!isset($router) || strpos($router->getControllername(), $module->getRoute()) === -1){
+		if(!isset($router) || strpos(strtolower($router->getControllername()), strtolower($module->getRoute())) === false){
 			//make sure we can access actions on the allowed module by not defaulting to index
 			$router = new Router($module->getRoute());
 		}	
 	}
+
 	$controller = $router->LoadController($dRep);
 	if($hasUser){
 		$controller->setUser($INK_User);

@@ -166,8 +166,8 @@ class UsersController extends BaseController{
 	public function groupprofile(){
 		$site = $this->INK_User->getSite();
 		$group = $this->getGroup();
-		$modules = $site->getModules();
 		$customer = $this->INK_User->getCustomer();
+		$modules = $this->dRep->getModuleCollection(array('customer' => $customer->getId()));
 		
 		include_once('view/users/groupdetails.users.php');
 	}

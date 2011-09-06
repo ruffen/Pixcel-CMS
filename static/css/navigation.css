@@ -118,44 +118,60 @@
 
 
 
-
-
 #settings-picker ul {
 	margin:0;
 	padding:0;
-	background: #171717;
-	-moz-border-radius-bottomleft:5px;
-	-moz-border-radius-bottomright:5px;
-	border-bottom:1px solid #565044;
-	border-left:1px solid #565044;
-	border-right:1px solid #565044;
+	background: #FFF;
+	
+	border-radius: 5px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	color:#666;
+	font-size:11px;
 	
 	
-	border-radius:5px;
-	-moz-border-radius:5px;
-	border:1px solid #565044;
-	
-	display:none;	
+	display:none;
 	list-style:none outside none;
-	padding-bottom:10px;
-	padding-top:10px;
 	position:absolute;
-	top:31px;
-	margin-left:0;
+	top:36px;
+	margin-left:-11px;
 	width:150px;
 	z-index:1001;
 }
+
+#settings-picker ul:before {
+background: url("https://css.createsend1.com/img/topPoint.png") no-repeat 125px 0px;
+content:"";
+height:9px;
+display:block;
+position:absolute;
+top:-9px;
+width:100%;
+}
+
+
+
 
 .ie7 #settings-picker ul {
 	margin-left:-99px;
 
 }
 
-#global #settings-picker ul li { margin:0; padding:0; float:left; width:100%; height:35px; color:#FFF; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:12px;  }
-#global #settings-picker ul li:hover {background:#333333; height:35px; }
+#global #settings-picker ul li { margin:0; padding:0; float:left; width:100%; color:#666; text-align:left; font-family:Arial, Helvetica, sans-serif; font-size:12px; border-top:1px solid #ccc;  }
+
+#global #settings-picker ul li:first-child { border:none; }
 
 
-#global #settings-picker ul li a { width:100%; text-align:left; font-size: 11px; line-height: 35px; padding:0; float:left; }
+
+#global #settings-picker ul li:hover {background: -moz-linear-gradient(center top, #39acec, #4cbefe 5%, #279ada); border-radius:0; }
+
+#global #settings-picker ul li:first-child:hover { border-radius: 3px 3px 0 0; }
+
+#global #settings-picker ul li:last-child:hover { border-radius: 0 0 3px 3px; }
+
+
+#global #settings-picker ul li a { width:100%; text-align:left; font-size: 11px; line-height: 35px; padding:0; float:left; color:#666; text-shadow:none; }
+
+#global #settings-picker ul li a:hover { color:#FFF; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
 
 #settings-picker:hover { }
 .system:hover #settings-picker ul { display: block; }
@@ -167,7 +183,7 @@
 #settings-picker ul img {
 	border:none;
 	float:left;
-	padding-top:8px;
+	padding-top:11px;
 	margin-right:7px;
-	margin-left:17px;
+	margin-left:10px;
 }		

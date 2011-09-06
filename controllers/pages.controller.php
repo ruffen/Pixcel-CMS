@@ -376,25 +376,30 @@ class PagesController extends BaseController{
 	}
 	private function getPage(){
 		global $varChecker;
-		if($varChecker->getValue('id') !== false && $varChecker->getValue('id') != 'new'){
-			//return session page if we have it
-			$page = $this->dRep->getPage($varChecker->getValue('id'), false);
-			if($page->getSiteId() == $this->INK_User->getCustomer()->getSite()->getId()){
-				return ($page instanceof Page) ? $page : $this->dRep->getPage($varChecker->getValue('id'));
+		try{
+			$id = $varChecker->getValue('id');
+			if($id == 'new'){
+				throw new DataException('newpage');	
 			}
+			//return session page if we have it
+			$page = $this->dRep->getPage($id, false);
+			if($page->getSiteId() == $this->INK_User->getCustomer()->getSite()->getId()){
+				$page = ($page instanceof Page) ? $page : $this->dRep->getPage($varChecker->getValue('id'));
+			}
+		}catch(DataException $e){
+			//we are visiting for first time, clear session, maybe to this in Repository? 
+			unset($_SESSION['Page']);
+			$pages = $this->dRep->getPageCollection(array(
+				'parent' => 0,
+				'siteId' => $this->INK_User->getCustomer()->getSite()->getId()
+				)
+			);
+			if(count($pages) > 0){
+				return $pages[0];	
+			}
+			$page = new Page();
+			$page->setProperties(array('id' => 'new'));
 		}
-		//we are visiting for first time, clear session, maybe to this in Repository? 
-		unset($_SESSION['Page']);
-		$pages = $this->dRep->getPageCollection(array(
-			'parent' => 0,
-			'siteId' => $this->INK_User->getCustomer()->getSite()->getId()
-			)
-		);
-		if(count($pages) > 0){
-			return $pages[0];	
-		}
-		$page = new Page();
-		$page->setProperties(array('id' => 'new'));
 		return $page;
 	}
 }

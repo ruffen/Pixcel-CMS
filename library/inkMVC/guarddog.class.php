@@ -52,7 +52,7 @@ class Guarddog{
 	}
 	public function ResolveUserSite(){
 		if(isset($_SESSION['site'])){
-			return $site;	
+			return unserialize($_SESSION['site']);	
 		}
 		$site = $this->user->getSite();
 		$_SESSION['site'] = serialize($site);

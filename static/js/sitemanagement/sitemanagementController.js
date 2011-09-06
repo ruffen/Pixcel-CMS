@@ -1,78 +1,83 @@
-﻿$(document).ready(function() {
-    
-    $('#createNewSite').bind('click', function(){
+﻿$(document).ready(function () {
+
+    $('#createNewSite').bind('click', function () {
         $(this).animate({
-            opacity : 0
+            opacity: 0
         }, 1500);
         $(this).parent('.separator').animate({
             height: 40
-          }, 2000);
+        }, 2000);
         return false;
     });
 
 
     $('#topbarSitelist').addClass('hidden');
-	$('#test_connection').bind('click', testconnection);
-    $('#browseftp').bind('click', function(){
+    $('#test_connection').bind('click', testconnection);
+    $('#browseftp').bind('click', function () {
         addLoadingImageToElement($(this));
-        doRequest($('#browseftp').attr('href'), function(html){
+        doRequest($('#browseftp').attr('href'), function (html) {
             removeLoadingImageInElement();
-            $.fancybox(html, {onComplete : ftpbrowser });
+            $.fancybox(html, { onComplete: ftpbrowser });
         }, getFtpdetails(), 'html');
         return false;
     });
-    $('#deletesite').bind('click', function(){
+    $('#deletesite').bind('click', function () {
         getMessage('confirmdeletesite', function () {
-            doRequest('sitemanagement/deletesite', function(){
-                var id = $('#site_tree a').filter(':first').attr('id');
-                getSite(id);
-                getSitelist();
-            });            
+            doRequest('sitemanagement/deletesite', function (data) {
+                if(isset(data.error)){
+                    getMessage(data);
+                }else{
+                    var id = $('#site_tree a').filter(':first').attr('id');
+                    getSite(id);
+                    getSitelist();
+                }
+            });
         });
         return false;
     });
-    $('#save').bind('click', function(){
+    $('#save').bind('click', function () {
         var button = replaceButtonwithloading($(this));
-    	var data = getFtpdetails();
-    	data.name = $('#sitename').attr('value');
-    	data.url = $('#siteurl').attr('value');
-    	data.id = $('#siteId').attr('value');
-		doRequest($(this).attr('href'), function(result){
+        var data = getFtpdetails();
+        data.name = $('#sitename').attr('value');
+        data.url = $('#siteurl').attr('value');
+        data.id = $('#siteId').attr('value');
+        doRequest($(this).attr('href'), function (result) {
             getMessage(result);
             $('input, select').removeClass('inputerror');
-            if(isset(result.elements)){
-                validate(result.elements);            
-            }else{
-                getSitelist();            
+            if (isset(result.elements)) {
+                validate(result.elements);
+            } else {
+                $('#siteId').attr('value', result.id);
+                getSitelist();
             }
-		    $('#save').html(button);
-		}, data);
-		return false;
-	});
-    $('#cancel').bind('click', function(){
+            $('#save').html(button);
+        }, data);
+        return false;
+    });
+    $('#cancel').bind('click', function () {
         var button = replaceButtonwithloading($(this));
         getSite($('#siteId').attr('value'), button);
         return false;
     });
-	$('#newsite').bind('click', function(){
-		$('#siteId').attr('value', 'new');
-		$('input[type=text], input[type=password]').attr('value', '');
-		$('#heading_sitename').text('New Site');
-		$("#protocol").get(0).selectedIndex = 0;
-		$('#pasv').attr('checked', true);
-		$('#port').attr('value', 21);
-		return false;
-	});
-	$('#sitename').bind('keyup', function(){
-		$('#heading_sitename').text($('#sitename').attr('value'));
-	});
-	$('#protocol').bind('change', function(){
-		if($(this).attr('value') == 'ftp'){
-			$('#port').attr('value', 21);
-		}else{
-			$('#port').attr('value', 22);		
-		}
-	});
+    $('#newsite').bind('click', function () {
+        $('#siteId').attr('value', 'new');
+        $('input[type=text], input[type=password]').attr('value', '');
+        $('#heading_sitename').text('New Site');
+        $("#protocol").get(0).selectedIndex = 0;
+        $('#pasv').attr('checked', true);
+        $('#port').attr('value', 21);
+        return false;
+    });
+    $('#sitename').bind('keyup', function () {
+        $('#heading_sitename').text($('#sitename').attr('value'));
+    });
+    $('#protocol').bind('change', function () {
+        if ($(this).attr('value') == 'ftp') {
+            $('#port').attr('value', 21);
+        } else {
+            $('#port').attr('value', 22);
+        }
+    });
     getSiteevents();
 });
 getSiteevents = function(){

@@ -37,6 +37,7 @@ class RoleRepository extends MysqlDb{
 		$this->saveModuleAccess($role);
 		$this->saveModuleRights($role);
 		$this->saveRoleSites($role);
+		$this->saveRoleUsers($role);
 		return $id;
 	}
 	public function updateRole($role){
@@ -46,7 +47,19 @@ class RoleRepository extends MysqlDb{
 		$this->saveModuleAccess($role);
 		$this->saveModuleRights($role);
 		$this->saveRoleSites($role);
+		$this->saveRoleUsers($role);
 		return $role->getId();
+	}
+	public function saveRoleUsers($role){
+		foreach($role->getUsers() as $userId => $access){
+			$values = array('userId' => $userId, 'roleId' => $role->getId());
+			$sql = "DELETE FROM ink_user_in_roles WHERE userId = :userId AND roleId = :roleId;";
+			$this->deleteValues($sql, $values);			
+			if($access){
+				$sql = "INSERT INTO ink_user_in_roles (userId, roleId) VALUES (:userId, :roleId);";
+				$this->updateRow($sql, $values);
+			}
+		}
 	}
 	public function deleteRoleSites($role){
 		$sql = "DELETE FROM ink_sites_in_roles WHERE roleId = ?";

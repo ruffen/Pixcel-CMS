@@ -224,21 +224,21 @@ class FileSystemController extends BaseController{
 	}
 	private function getCurrentFolder(){
 		global $varChecker;
-		
-		if($varChecker->getValue('id') && is_numeric($varChecker->getValue('id'))){
-			return $this->dRep->getFolder($varChecker->getValue('id'));
-		}else if($varChecker->getValue('id') && $varChecker->getValue('id') == 'new'){
-			$folder = new Folder();
-			$folder->setProperties(array('id' => 'new', 'parent' => 0));
-			return $folder;
-		}else if($varChecker->getValue('id')){
+		try{
+			$id = $varChecker->getValue('id');
+			if($id == 'new'){
+				$folder = new Folder();
+				$folder->setProperties(array('id' => 'new'));
+			}else{
+				$folder = $this->dRep->getFolder($id);
+			}			
+		}catch(DataException $e){
 			$folders = $this->dRep->getFolderCollection(array('site' => $this->INK_User->getCustomer()->getSite()->getId()));
-		}else{
-			$folders = $this->dRep->getFolderCollection(array('site' => $this->INK_User->getCustomer()->getSite()->getId(), 'parent' => 0));
+			if(count($folders) == 0){
+				throw new DataException('nofolder');
+			}
+			$folder = $folders[0];
 		}
-		if(count($folders) == 0){
-			throw new DataException('nofolder');
-		}
-		return $folders[0];
+		return $folder;				
 	}
 }

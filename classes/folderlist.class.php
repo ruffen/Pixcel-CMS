@@ -7,7 +7,11 @@ class FolderList extends Listmaker{
 	}
 	protected function createList($parent, $level = 1){
 		global $INK_User, $varChecker;
-		$siteId = ($varChecker->getValue('siteId') === false) ? $INK_User->getSite()->getId() : $varChecker->getValue('siteId');
+		try{
+			$siteId = $varChecker->getValue('siteId');
+		}catch(DataException $e){
+			$siteId = $INK_User->getSite()->getId();
+		}
 		$root = false;
 		$folders = $this->dRep->getFolderCollection(array(
 			'parent' => $parent,

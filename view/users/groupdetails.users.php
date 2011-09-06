@@ -31,7 +31,7 @@ foreach($customer->getSites() as $index => $site){
 								</tr>
 <?php
 }
-foreach($site->getModules() as $index => $module){
+foreach($modules as $index => $module){
 ?>
 							<tr>
 								<td width="35%" class="greytd">

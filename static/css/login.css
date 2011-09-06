@@ -9,18 +9,48 @@
 
 html 											{ height:100%; min-height:100%; margin:0 auto; padding:0; font-family:Arial, Helvetica, sans-serif; color:#d3d3d3; } 
 body 											{ background:#171717; margin:0 auto; width:650px; height:100%; min-height:100%; padding:0; }
-	#logo										{ background:url(../images/logo-login-pixel.png); width:260px; height:176px; margin-left:30px; margin-bottom:25px; }
+	#logo										{ background:url(../images/logo-login-pixel.png); width:260px; height:176px; margin-left:30px;  }
 		#logospan								{ padding-top:140px; }
 		#logospan img							{ border:none; }
 		#logospan a								{ border:none; }
-	#panel										{ background:url(../images/login-panel-bg.jpg) no-repeat; width:645px; height:95px; margin-bottom:20px; }
+	#panel										{ background: #3c3a3b; /* Old browsers */
+background: -moz-linear-gradient(top, #3c3a3b 0%, #161616 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3c3a3b), color-stop(100%,#161616)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #3c3a3b 0%,#161616 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #3c3a3b 0%,#161616 100%); /* Opera11.10+ */
+background: -ms-linear-gradient(top, #3c3a3b 0%,#161616 100%); /* IE10+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3c3a3b', endColorstr='#161616',GradientType=0 ); /* IE6-9 */
+background: linear-gradient(top, #3c3a3b 0%,#161616 100%); /* W3C */ width:645px; height:95px; margin-bottom:20px; margin-top:25px; border-radius: 3px; border: 1px solid #4d4d4d; }
 		#container 								{ margin-top:37px; float:left; color:FFF; margin-left:30px; }		
 		#left 									{ float:left; margin-right:8px; text-align:left; color:#fff; }	
 		#middle 								{ float:left; margin-right:8px; text-align:left; color:#fff; }	
 		#right 									{ padding-top:14px; float:left; }
-		.input1 								{ font-size : 11px; padding-left : 5px; padding-top : 3px; border-width : 1px; border-color : #252525; border-style : solid; height : 17px; width : 205px; }
-		.bluebutton								{ width:143px; background-image:url(../images/sprite-layout-and-buttons.png); background-position:-10px -1338px; cursor:pointer; padding:6px 0; text-align:center; display: inline-block; margin-right:5px; margin-top:-16px; float:left; color:#FFF; font-size:12px; }
-		.bluebutton:hover						{ background-image:url(../images/sprite-layout-and-buttons.png); background-position:-171px -1338px; }
+		.input1 								{ font-size : 11px; padding-left : 5px; padding-top : 3px; border-width : 1px; border-color : #252525; border-style : solid; height : 20px; width : 205px; border-radius:3px; }
+		.bluebutton								{ background: -moz-linear-gradient(0% 100% 90deg, #929292, silver) repeat scroll 0 0 transparent; 
+    border: 1px solid #8C8C8C; 
+    border-radius: 3px 3px 3px 3px; 
+    box-shadow: 0 1px 0 #CCC inset, 0 1px 0 #999; 
+    color: #FFFFFF; 
+    cursor: pointer; 
+    display: inline-block; 
+    float: right; 
+    font-size: 12px; 
+    height: 23px; 
+    margin-top: -3px; 
+    padding: 0; 
+    text-align: center; 
+    width: 143px; 
+	margin-top: -14px;
+	line-height:23px;
+	
+	color: #FFFFFF; 
+    font-size: 12px; 
+    font-weight: 700; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); 
+	
+	 }
+		.bluebutton:hover						{ background-color: #A3A3A3;
+    background-image: -moz-linear-gradient(0% 100% 90deg, #A3A3A3, silver); }
 	#features									{ width:580px; margin-left:30px; padding:20px 0; margin-bottom:0px; }
 		#features img							{ float:left; margin:-5px 35px 0 15px; }
 		#features .largeimg						{ float:left; margin:-15px 20px 0 0; }

@@ -21,10 +21,17 @@ class SitemanagementController extends BaseController{
 		return array('success' => 'ftp_ok');
 	}
 	public function Save(){
+		global $fido;
 		$site = $this->getSite();
 		$site = $this->dRep->saveSite($site);
+		$fido->updateSite($site);
+		
+		$this->INK_User->getRole()->setAccess($site, true);
+		$this->dRep->saveRole($this->INK_User->getRole());
+		$fido->updateUser($this->INK_User);
+		
 		if($site->getId() != 'new'){
-			return array('success' => 'savesite');
+			return array('success' => 'savesite', 'id' => $site->getId());
 		}else{
 			return array('error' => 'savesite_failed');
 		}

@@ -24,7 +24,6 @@ class Role extends Asset{
 		}else if($object instanceof Right){
 			$moduleId = ($module instanceof Module) ? $module->getId() : $module;
 			return (isset($this->rights[$object->getId()]) && $this->rights[$object->getId()] == $moduleId && $this->rights[$object->getId()] !== false) ? true : false;
-			
 		}else if($object instanceof Site){
 			foreach($this->sites as $site){
 				if($site->getId() == $object->getId()){
@@ -46,6 +45,16 @@ class Role extends Asset{
 				$this->rights[$object->getId()] = $access;
 			}else if(isset($this->rights[$object->getId()])){
 				unset($this->rights[$object->getId()]);
+			}
+		}else if($object instanceof Site){
+			if($access){
+				$sites = from('$site')->in($this->sites)->where('$site => $site->getId() == $object->getId()')->select('$site');
+				if(count($sites) == 0){
+					$this->sites[] = $object;
+				}
+			}else{
+				$sites = from('$site')->in($this->sites)->where('$site => $site->getId() != $object->getId()')->select('$site');
+				$this->sites = $sites;
 			}
 		}else{
 			throw new DataException('wrongtype');

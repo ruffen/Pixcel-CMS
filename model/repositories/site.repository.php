@@ -91,13 +91,13 @@ class SiteRepository extends MysqlDb{
 		$values = array(
 			$site->getName(), 
 			$site->getUrl(), 
-			$ftpDetails['url'], 
-			$ftpDetails['path'], 
-			$ftpDetails['username'], 
-			$ftpDetails['password'], 
-			$ftpDetails['passv'], 
-			$ftpDetails['protocol'], 
-			$ftpDetails['port'],
+			$site->getFTPUrl(), 
+			$site->getPath('root'), 
+			$site->getFTPUsername(), 
+			$site->getFTPPassword(), 
+			$site->UsesPassive(), 
+			$site->getMode(), 
+			$site->getPort(),
 			$site->getId(),
 			$INK_User->getCustomer()->getId()
 		);
