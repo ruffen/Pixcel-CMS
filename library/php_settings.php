@@ -15,6 +15,7 @@ class LockException extends ErrorException{}
 class NoUserNeededException extends ErrorException{}
 class SiteException extends ErrorException{}
 class NotImplementedException extends ErrorException{}
+class WHCMSException extends ErrorException{}
 class DataException extends ErrorException{
 	private $elements;
 	public function __construct($message = "", $elements = array(), $code = 0, $previous = null){

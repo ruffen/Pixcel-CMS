@@ -2,27 +2,27 @@
 class PagesController extends BaseController{
 	public function index(){
 		$site = $this->INK_User->getCustomer()->getSite();
-		$templates = $this->dRep->getTemplateCollection(array('site' => $site->getId()));
+		$pixelcmss = $this->dRep->getpixelcmsCollection(array('site' => $site->getId()));
 		$menu = new PageList(array('id' => 'dhtmlgoodies_tree2'), array('noDrag' => 'true'));
 		$page = $this->getPage();
-		$this->template->template = $page->getTemplate();
-		$this->template->siteName = $site->getName();
-		$this->template->sitemap = $menu->getList();
-		$this->template->templates = $templates;
-		$this->template->page = $page;
-		$this->template->indexText = ($page->isIndex()) ? ' - (index)' : '';
+		$this->pixelcms->pixelcms = $page->getpixelcms();
+		$this->pixelcms->siteName = $site->getName();
+		$this->pixelcms->sitemap = $menu->getList();
+		$this->pixelcms->pixelcmss = $pixelcmss;
+		$this->pixelcms->page = $page;
+		$this->pixelcms->indexText = ($page->isIndex()) ? ' - (index)' : '';
 
 		if($userId = MemoryHandler::getInstance()->pageLocked($page) !== false){
 			$userWithLock = $this->dRep->getUser($userId);
-			$this->template->locked = true;
-			$this->template->userWithLocked = $userWithLock;
-			$this->template->disable = false;
+			$this->pixelcms->locked = true;
+			$this->pixelcms->userWithLocked = $userWithLock;
+			$this->pixelcms->disable = false;
 			if($userWithLock->getId() != $this->INK_User->getId()){
-				$this->template->disable = true;
+				$this->pixelcms->disable = true;
 			}
 		}else{
-			$this->template->disable = false;
-			$this->template->locked = false;
+			$this->pixelcms->disable = false;
+			$this->pixelcms->locked = false;
 		}
 	}
 	public function lockpage(){
@@ -57,8 +57,8 @@ class PagesController extends BaseController{
 		$site = $this->INK_User->getCustomer()->getSite();
 		
 		$menu = new PageList(array('id' => 'sitemap'), array('noDrag' => $noDrag) );
-		$this->template->siteName = $site->getName();
-		$this->template->sitemap = $menu->getList();
+		$this->pixelcms->siteName = $site->getName();
+		$this->pixelcms->sitemap = $menu->getList();
 	}
 	public function savesitemap($pageTree = null, $parent = 0){
 		global $varChecker;
@@ -96,8 +96,8 @@ class PagesController extends BaseController{
 	}
 	public function newpage(){
 		$site = $this->INK_User->getCustomer()->getSite();
-		$this->template->site = $site;
-		$this->template->templates = $this->dRep->getTemplateCollection(array('site' => $site->getId()));
+		$this->pixelcms->site = $site;
+		$this->pixelcms->pixelcmss = $this->dRep->getpixelcmsCollection(array('site' => $site->getId()));
 	}
 	public function getPagedetails($save = false){
 		global $varChecker;
@@ -164,11 +164,11 @@ class PagesController extends BaseController{
 		$page->setLang(1, 'Title', $varChecker->getValue('pagename'));
 		$page->setLang(1, 'Keywords', $varChecker->getValue('keywords'));
 		$page->setLang(1, 'Description', $varChecker->getValue('description'));
-		if(!is_object($page->getTemplate()) || $varChecker->getValue('template') != $page->getTemplate()->getId()){
-			$template = $this->dRep->getTemplate($varChecker->getValue('template'));
+		if(!is_object($page->getpixelcms()) || $varChecker->getValue('pixelcms') != $page->getpixelcms()->getId()){
+			$pixelcms = $this->dRep->getpixelcms($varChecker->getValue('pixelcms'));
 			$page->setProperties(
 				array(
-					'template' => $template,
+					'pixelcms' => $pixelcms,
 					'author' => $this->INK_User
 				)
 			);			
@@ -308,23 +308,23 @@ class PagesController extends BaseController{
 		if($userId = MemoryHandler::getInstance()->pageLocked($page) !== false){
 			$userWithLock = $this->dRep->getUser($userId);
 			if($userWithLock->getId() != $this->INK_User->getId()){
-				$this->template->disable = true;
+				$this->pixelcms->disable = true;
 				$msgController = new MessageController($this->dRep);
 				return $msgController->getMessage('isLocked');
 			}
 		}
 		if($varChecker->getVAlue('tplId') < 1){
-			throw new DataException('invalidtemplate');
+			throw new DataException('invalidpixelcms');
 		}
-		//if template has changed set the new one. 
-		if($varChecker->getValue('tplId') != $page->getTemplate()->getId()){
-			$template = $this->dRep->getTemplate($varChecker->getValue('tplId'));
-			$page->setProperties(array('template' => $template));			
+		//if pixelcms has changed set the new one. 
+		if($varChecker->getValue('tplId') != $page->getpixelcms()->getId()){
+			$pixelcms = $this->dRep->getpixelcms($varChecker->getValue('tplId'));
+			$page->setProperties(array('pixelcms' => $pixelcms));			
 		}
 		
 		$this->dRep->savePage($page, false);
 		ob_start();
-		foreach($page->getTemplate()->getSpots() as $tplSpotId => $spot){
+		foreach($page->getpixelcms()->getSpots() as $tplSpotId => $spot){
 			if(!$spot->uservalue()){
 				continue;
 			}

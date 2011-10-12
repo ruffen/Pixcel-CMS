@@ -26,8 +26,11 @@ class SitemanagementController extends BaseController{
 		$site = $this->dRep->saveSite($site);
 		$fido->updateSite($site);
 		
-		$this->INK_User->getRole()->setAccess($site, true);
-		$this->dRep->saveRole($this->INK_User->getRole());
+		$role = $this->INK_User->getRole();
+		$role->setAccess($site, true);
+		
+		$this->dRep->saveRole($role);
+		$this->INK_User->setRole($role);
 		$fido->updateUser($this->INK_User);
 		
 		if($site->getId() != 'new'){

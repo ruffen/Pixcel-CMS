@@ -18,19 +18,19 @@ class UsersController extends BaseController{
 	public function deleteGroup(){
 		$group = $this->getGroup();
 		if($group->hasUsers()){
-			echo json_encode(array('error' => 'group_hasusers'));
+			echo array('error' => 'group_hasusers');
 			return false;
 		}else if($group->getId() == 'new'){
-			echo json_encode(array('error' => 'group_new'));
+			echo array('error' => 'group_new');
 			return false;
 		}
 		$this->dRep->delRole($group);
-		echo json_encode(array('success' => 'group_deleted'));
+		return array('success' => 'group_deleted');
 	}
 	public function saveGroup(){
 		global $varChecker, $fido;
 		$group = $this->getGroup();
-		$modules = $this->INK_User->getSite()->getModules();
+		$modules = $this->dRep->getModuleCollection(array('customer' => $this->INK_User->getCustomer()->getId()));
 		
 		foreach($modules as $index => $module){
 			$group->setAccess($module, ($varChecker->getValue('module_'.$module->getId()) == 'true'));
@@ -44,7 +44,8 @@ class UsersController extends BaseController{
 			}
 		}
 		$sites = array();
-		foreach($this->INK_User->getCustomer()->getSites() as $site){
+		$allsites = $this->dRep->getSiteCollection(array('customer' => $this->INK_User->getCustomer()->getId()));
+		foreach($allsites as $site){
 			if($varChecker->getValue('site_'.$site->getId()) == 'true'){
 				$sites[] = $site;
 			}
@@ -58,7 +59,7 @@ class UsersController extends BaseController{
 		$this->INK_User->setRole($group);
 		$fido->updateUser($this->INK_User);
 		
-		echo json_encode(array('success' => 'savedgroup', 'id' => $group->getId()));
+		return array('success' => 'savedgroup', 'id' => $group->getId());
 	}
 	public function saveUser(){
 		global $varChecker;
@@ -96,8 +97,7 @@ class UsersController extends BaseController{
 		if($result['elements'] != ''){
 			$result['error'] = 'elementerror';
 			$result['elements'] = trim($result['elements'], ';');
-			echo json_encode($result);
-			return ;
+			return $result;
 		}
 		$user->addRole($group);
 		$user->setProperties($properties);
@@ -108,16 +108,17 @@ class UsersController extends BaseController{
 			global $fido;
 			$fido->updateUser($user);
 		}
-		echo json_encode(array('success' => 'user_saved', 'id' => $user->getId()));
+		return array('success' => 'user_saved', 'id' => $user->getId());
 	}
 	public function deleteUser(){
 		$user = $this->getUser();
 		if($user->getId() == $this->INK_User->getId()){
-			echo json_encode(array('error' => 'delete_self'));
+			$result = array('error' => 'delete_self');
 		}else{
 			$this->dRep->delUser($user);
-			echo json_encode(array('success' => 'user_deleted'));		
+			$result = array('success' => 'user_deleted');		
 		}
+		return $result;
 	}
 	public function UsersMenu(){
 		global $varChecker;
@@ -127,7 +128,7 @@ class UsersController extends BaseController{
 			$drag = false;
 		}
 		
-		$customer = $this->INK_User->getSite();
+		$customer = $this->INK_User->getCustomer();
 		$groups = $this->dRep->getRoleCollection(array('customer' => $customer->getId()));
 		foreach($groups as $index => $group){
 			ob_start();
@@ -161,12 +162,13 @@ class UsersController extends BaseController{
 			$group->setProperties(array('users' => $users));
 			$this->dRep->saveRole($group);
 		}
-		echo json_encode(array('success' => 'usermap_saved'));
+		return array('success' => 'usermap_saved');
 	}
 	public function groupprofile(){
 		$site = $this->INK_User->getSite();
 		$group = $this->getGroup();
 		$customer = $this->INK_User->getCustomer();
+		$sites = $this->dRep->getSiteCollection(array('customer' => $customer->getId()));
 		$modules = $this->dRep->getModuleCollection(array('customer' => $customer->getId()));
 		
 		include_once('view/users/groupdetails.users.php');

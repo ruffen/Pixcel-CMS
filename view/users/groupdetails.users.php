@@ -19,7 +19,7 @@
                     
                     <table class="dashtable usertbl" id="moduletable">
 <?php
-foreach($customer->getSites() as $index => $site){
+foreach($sites as $index => $site){
 ?>
 								<tr>
 									<td width="35%" class="greytd">

@@ -17,8 +17,9 @@ class MessageController extends BaseController{
 			case 'notification' : $file = 'notification.message.php';break;
 			default: $file = 'notification.message.php';break;
 		}
-		//include the file and display it
+		ob_start();//include the file and display it
 		require_once('view/message/'.$file);
+		return ob_get_clean();
 	}
 	public function getLoginMessage($e){
 		$type = $e->getMessage();

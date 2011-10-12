@@ -12,6 +12,7 @@ try{
 		$router = new Router(trim($route,'/'));
 	}catch(DataException $e){
 		$module = $dRep->getModule('index');
+		$router = new Router($module->getRoute());
 	}
 	/*** find the module we are looking for ***/
 	

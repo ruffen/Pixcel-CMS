@@ -7,9 +7,9 @@ class FileSystemController extends BaseController{
 		$folders = $this->dRep->getFolderCollection(array('site' => $site->getId()));
 		ob_start();
 		$this->foldermenu('false');
-		$this->template->folderlist = ob_get_clean();
+		$this->pixelcms->folderlist = ob_get_clean();
 		try{
-			$this->template->folder = $this->getCurrentFolder();
+			$this->pixelcms->folder = $this->getCurrentFolder();
 		}catch(DataException $e){
 		
 		}

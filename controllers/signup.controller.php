@@ -31,11 +31,27 @@ class SignupController extends BaseController{
 		
 		$customer = new Customer();
 		$customer->setProperties($customerProperties);
-		$customer = $this->dRep->saveCustomer($customer);
 		
 		$user = new User();
 		$userProperties['customer'] = $customer;
 		$user->setProperties($userProperties);
+		
+		//create the user in whcms
+		$whcms = new WHCMS("https://myaccount.inkagency.com.au/includes/api.php", "apiadmin", "p1x37cm5");
+		$whcmsId = $whcms->CreateClient($user);
+		
+		//save customer to get Id
+		$customer = $this->dRep->saveCustomer($customer);
+
+		//set customer again and whcmsid
+		$userProperties['whcmsId'] = $whcmsId;
+		$userProperties['customer'] = $customer;
+		$user->setProperties($userProperties);
+
+		//add the pixelcms whcms product to the user
+		$result = $whcms->AddProducToCustomer($user);
+		
+		//save user
 		$user = $this->dRep->saveUser($user);
 		
 		$users = array($user);
@@ -55,7 +71,7 @@ class SignupController extends BaseController{
 				$group->setAccess($kid, true);
 			}
 		}
-		$group = $this->dRep->saveRole($group);
+		$group = $this->dRep->saveRole($group);		
 	}
 	public function CheckUniqueFields($fieldname = false, $value = false){
 		global $varChecker;

@@ -48,12 +48,12 @@ class Role extends Asset{
 			}
 		}else if($object instanceof Site){
 			if($access){
-				$sites = from('$site')->in($this->sites)->where('$site => $site->getId() == $object->getId()')->select('$site');
+				$sites = from('$site')->in($this->sites)->where('$site => $site->getId() == '.$object->getId())->select('$site');
 				if(count($sites) == 0){
 					$this->sites[] = $object;
 				}
 			}else{
-				$sites = from('$site')->in($this->sites)->where('$site => $site->getId() != $object->getId()')->select('$site');
+				$sites = from('$site')->in($this->sites)->where('$site => $site->getId() != '.$object->getId())->select('$site');
 				$this->sites = $sites;
 			}
 		}else{

@@ -4,7 +4,7 @@ class Router{
 	private $route;
 	private $controller;
 	private $action;
-	private $template;
+	private $view;
 	private $ajax;
 	
 	public function __construct($route){
@@ -49,23 +49,23 @@ class Router{
 		/* AJAX check  */
 		if($this->ajax) {
 			if(is_file('view/'.$this->controller->getName().'/'.$this->resolveAction().'.'.$this->controller->getName().'.php')){
-				$this->template = $this->getView();
+				$this->view = $this->getView();
 			}else{
-				$this->template = $this->runAction();	
+				$this->view = $this->runAction();	
 			}
 		}else{
-			$this->template = $this->getMasterTemplate($this->controller, $hasUser);
+			$this->view = $this->getMasterview($this->controller, $hasUser);
 		}
 	}
 	public function printHtml($hasuser){
-		if(is_object($this->template) && !$this->ajax){
-			$this->template->show('masterpage', ($hasuser) ? 'ink02' : 'ink02nouser');
-		}else if(is_object($this->template) && $this->ajax){
-			$this->template->show($this->controller->getName(), $this->resolveAction());		
-		}elseif(strpos($_SERVER["HTTP_ACCEPT"], 'json') !== -1){
-			echo trim(json_encode($this->template));
+		if(is_object($this->view) && !$this->ajax){
+			$this->view->show('masterpage', ($hasuser) ? 'ink02' : 'ink02nouser');
+		}else if(is_object($this->view) && $this->ajax){
+			$this->view->show($this->controller->getName(), $this->resolveAction());		
+		}elseif(strpos($_SERVER["HTTP_ACCEPT"], 'json') !== false){
+			echo json_encode($this->view);
 		}else{
-			echo trim($this->template);
+			echo trim($this->view);
 		}
 	}
 	private function resolveController($repository){
@@ -92,7 +92,7 @@ class Router{
 		//index is the standard action
 		return 'index';
 	}
-	private function getMasterTemplate($controller, $hasUser){
+	private function getMasterview($controller, $hasUser){
 		global $INK_User;
 		$controllerName = $controller->GetName();
 		$javaScripts = new JS($controllerName);
@@ -100,44 +100,44 @@ class Router{
 
 		//set master statically, we may want to change this to a user controller thing later.
 		//May be usefull for access controll as well.
-		$masterTemplate = new ViewTemplate();
+		$masterview = new ViewTemplate();
 		if($hasUser){
 			$modules = $INK_User->getModules();
 			$customermodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 0')->select('$module');
 			$systemmodules = from('$module')->in($modules)->where('$module => $module->SystemStatus() == 1')->select('$module');
 			$moduleList = new ModuleList($customermodules, $controllerName, array('id' => 'navigation'));		
-			$masterTemplate->SysModules = $systemmodules;
-			$masterTemplate->sites = $INK_User->getRole()->getSites();
-			$masterTemplate->INK_User = $INK_User;
-			$masterTemplate->modules = $moduleList->getList();
+			$masterview->SysModules = $systemmodules;
+			$masterview->sites = $INK_User->getRole()->getSites();
+			$masterview->INK_User = $INK_User;
+			$masterview->modules = $moduleList->getList();
 		}
-		$masterTemplate->javascripts = $javaScripts->getScripts();
-		$masterTemplate->cssfiles = $cssfiles->getFiles();
-		$masterTemplate->hasUser = $hasUser;
+		$masterview->javascripts = $javaScripts->getScripts();
+		$masterview->cssfiles = $cssfiles->getFiles();
+		$masterview->hasUser = $hasUser;
 
 		//show the view and return the result as a string
-		$viewTemplate = $this->getView();
+		$viewview = $this->getView();
 		ob_start();
 		try{
-			$viewTemplate->show($this->controller->getName(), $this->resolveAction());
+			$viewview->show($this->controller->getName(), $this->resolveAction());
 		}catch(Exception $e){
 			throw $e;
 		}
-		$masterTemplate->maincontent = ob_get_clean();
-		return $masterTemplate;
+		$masterview->maincontent = ob_get_clean();
+		return $masterview;
 	}
 	private function getView(){
 
-		//create a new template for the view
-		$viewTemplate = new ViewTemplate();
+		//create a new view for the view
+		$viewview = new ViewTemplate();
 
-		$this->controller->setTemplate($viewTemplate);
+		$this->controller->setTemplate($viewview);
 		
 		$viewResult = $this->runAction();
 				
-		//get template back after action has done what it needs
-		$viewTemplate = $this->controller->getTemplate();
-		return $viewTemplate;		
+		//get view back after action has done what it needs
+		$viewview = $this->controller->getTemplate();
+		return $viewview;		
 	}
 }
 ?>

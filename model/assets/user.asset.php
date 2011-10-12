@@ -1,6 +1,6 @@
 <?php
 class User extends Asset{
-	protected $id;
+	protected $whcmsId;
 	protected $username;
 	protected $password;
 	protected $email;
@@ -12,6 +12,9 @@ class User extends Asset{
 	protected $sites = array();
 	protected $active;
 	
+	public function getWhcmsId(){
+		return $this->whcmsId;
+	}
 	public function getUsername(){
 		return $this->username;	
 	}
